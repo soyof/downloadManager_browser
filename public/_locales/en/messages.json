@@ -3,7 +3,7 @@
     "message": "Download Manager"
   },
   "extDescription": {
-    "message": "Modern tech-style browser download manager extension"
+    "message": "Powerful download manager with pause/resume, retry, filter & sort, search, pagination features. Supports multiple themes and languages for efficient download management"
   },
   "commonConfirm": { "message": "Confirm" },
   "commonCancel": { "message": "Cancel" },

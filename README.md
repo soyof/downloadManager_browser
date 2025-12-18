@@ -1,22 +1,27 @@
 # 下载管理器浏览器插件
 
-一款基于 Vue 3 + TypeScript + ElementPlus 开发的现代科技风浏览器下载管理器插件，支持多主题切换、多语言适配，具备完整的下载管理核心功能。
+一款功能强大、界面精美的浏览器下载管理器插件，基于 Vue 3 + TypeScript + ElementPlus 开发，提供完整的下载管理功能，支持多主题切换和多语言适配。
 
 ## ✨ 功能特性
 
 ### 核心功能
-- ✅ **下载列表管理**：展示所有下载项（名称、大小、进度、状态、时间、存储路径）
-- ✅ **下载控制**：暂停/继续、取消、删除、重试、打开文件/文件夹
-- ✅ **筛选/排序**：按状态、文件类型、时间/大小排序
-- ✅ **搜索功能**：模糊搜索下载项名称
-- ✅ **下载设置**：自定义下载路径、限速设置、同时下载任务数限制
-- ✅ **通知提醒**：下载完成后自动通知
+
+- ✅ **完整的下载管理**：统一管理所有下载任务，实时显示下载进度、速度、剩余时间
+- ✅ **灵活的下载控制**：支持暂停/继续、取消、重试、删除记录或删除文件及记录
+- ✅ **智能文件检测**：自动检测文件是否存在，已删除文件特殊标识，支持重新下载
+- ✅ **强大的筛选排序**：按状态（全部/下载中/已完成/失败/已暂停/已取消）、文件类型筛选，支持按时间/大小排序
+- ✅ **快速搜索**：实时模糊搜索文件名，快速定位目标下载项
+- ✅ **分页展示**：支持自定义每页显示数量，大量下载记录也能轻松管理
+- ✅ **一键操作**：快速打开文件/文件夹、复制下载链接、批量操作
+- ✅ **通知提醒**：下载完成/失败时自动通知，不错过重要下载
 
 ### 界面特性
-- 🎨 **现代科技风**：深色基调，霓虹蓝/青色调，磨砂玻璃质感
-- 🎭 **多主题切换**：科技蓝、赛博紫、暗夜黑、极简白
-- 🌍 **多语言支持**：中文（简/繁）、英文、日文
-- ✨ **流畅动效**：Animate.css 动效，进度条流光效果，卡片悬浮交互
+
+- 🎨 **现代科技风设计**：深色基调，霓虹蓝/青色调，磨砂玻璃质感，视觉体验出色
+- 🎭 **多主题切换**：科技蓝、赛博紫、暗夜黑、极简白四种主题，满足不同审美需求
+- 🌍 **多语言支持**：完整支持中文（简体/繁体）、英文、日文，国际化体验
+- ✨ **流畅动效**：基于 Animate.css 的优雅动画效果，进度条流光效果，卡片悬浮交互
+- 📱 **响应式布局**：适配不同屏幕尺寸，操作便捷流畅
 
 ## 🛠️ 技术栈
 
@@ -24,7 +29,7 @@
 - **前端框架**：Vue 3 (Composition API)
 - **类型系统**：TypeScript (严格模式)
 - **UI 组件库**：ElementPlus
-- **样式方案**：Less（模块化、变量化）
+- **样式方案**：SCSS（模块化、变量化）
 - **动效库**：Animate.css
 - **状态管理**：Pinia
 - **国际化**：vue-i18n
@@ -33,45 +38,47 @@
 ## 📁 项目结构
 
 ```
-未命名文件夹/
-├── public/                 # 静态资源
-│   ├── manifest.json       # 浏览器插件清单文件
-│   └── icons/             # 插件图标
+downloadManage/
+├── public/                    # 静态资源
+│   ├── manifest.json          # 浏览器插件清单文件
+│   ├── icons/                 # 插件图标
+│   └── _locales/              # 国际化消息文件
+│       ├── zh_CN/             # 简体中文
+│       ├── zh_TW/             # 繁体中文
+│       ├── en/                # 英文
+│       └── ja/                # 日文
 ├── src/
-│   ├── background/        # 后台服务脚本
-│   │   └── index.ts       # Service Worker
-│   ├── components/        # Vue 组件
-│   │   └── DownloadItem.vue
-│   ├── locales/           # 多语言包
-│   │   ├── zh-CN.ts       # 简体中文
-│   │   ├── zh-TW.ts       # 繁体中文
-│   │   ├── en.ts          # 英文
-│   │   └── ja.ts          # 日文
-│   ├── router/            # 路由配置
+│   ├── background/            # 后台服务脚本
+│   │   ├── index.ts           # Service Worker 入口
+│   │   ├── listeners/          # 事件监听器
+│   │   └── utils/              # 后台工具函数
+│   ├── components/            # Vue 组件
+│   │   ├── DownloadItem/      # 下载项组件
+│   │   └── DownloadList/      # 下载列表组件
+│   ├── i18n/                  # 国际化配置
 │   │   └── index.ts
-│   ├── store/             # Pinia 状态管理
-│   │   ├── download.ts    # 下载管理 Store
-│   │   └── settings.ts    # 设置管理 Store
-│   ├── styles/            # 样式文件
-│   │   ├── variables.less  # Less 变量（主题配置）
-│   │   └── main.less      # 全局样式
-│   ├── types/             # TypeScript 类型定义
+│   ├── router/                # 路由配置
+│   │   └── index.ts
+│   ├── store/                 # Pinia 状态管理
+│   │   ├── download.ts        # 下载管理 Store
+│   │   └── settings.ts        # 设置管理 Store
+│   ├── styles/                # 样式文件
+│   │   ├── variables.scss     # SCSS 变量（主题配置）
+│   │   └── main.scss          # 全局样式
+│   ├── types/                 # TypeScript 类型定义
 │   │   └── download.ts
-│   ├── utils/             # 工具函数
-│   │   ├── download.ts    # 下载相关工具
-│   │   ├── i18n.ts        # 国际化工具
-│   │   ├── theme.ts       # 主题管理工具
-│   │   └── storage.ts     # 存储工具
-│   ├── views/             # 页面视图
-│   │   ├── DownloadList.vue
-│   │   └── Settings.vue
-│   ├── App.vue            # 根组件
-│   └── main.ts            # 应用入口
-├── index.html             # HTML 入口文件
-├── package.json           # 项目配置
-├── tsconfig.json          # TypeScript 配置
-├── vite.config.ts         # Vite 配置
-└── README.md              # 项目说明
+│   ├── utils/                 # 工具函数
+│   │   └── downloadConverter.ts
+│   ├── views/                 # 页面视图
+│   │   ├── DownloadList.vue   # 下载列表页面
+│   │   └── Settings.vue       # 设置页面
+│   ├── App.vue                # 根组件
+│   └── main.ts                # 应用入口
+├── index.html                 # HTML 入口文件
+├── package.json               # 项目配置
+├── tsconfig.json              # TypeScript 配置
+├── vite.config.ts             # Vite 配置
+└── README.md                  # 项目说明
 ```
 
 ## 🚀 快速开始
@@ -141,7 +148,7 @@ yarn build
 
 ### 自定义主题
 
-主题通过 Less 变量系统实现，修改 `src/styles/variables.less` 中的 CSS 变量即可自定义主题。
+主题通过 SCSS 变量系统实现，修改 `src/styles/variables.scss` 中的 CSS 变量即可自定义主题。
 
 ## 🌍 语言支持
 
@@ -163,19 +170,28 @@ yarn build
 
 ### 主题系统
 
-主题系统基于 CSS 变量实现，通过修改 `data-theme` 属性切换主题。主题变量定义在 `src/styles/variables.less` 中。
+主题系统基于 CSS 变量实现，通过修改 `data-theme` 属性切换主题。主题变量定义在 `src/styles/variables.scss` 中。支持：
+
+- 4 种预设主题：科技蓝、赛博紫、暗夜黑、极简白
+- 主题设置持久化存储
+- 暗色模式自动适配
 
 ### 国际化
 
-使用 `vue-i18n` 实现多语言支持，语言包存放在 `src/locales` 目录下。新增语言需要：
+使用 `vue-i18n` 和 Chrome Extension 的 `_locales` 机制实现多语言支持。语言包存放在 `public/_locales` 目录下，使用标准的 Chrome Extension 国际化格式。新增语言需要：
 
-1. 在 `src/locales` 目录下创建语言文件
-2. 在 `src/utils/i18n.ts` 中注册新语言
+1. 在 `public/_locales` 目录下创建语言文件夹（如 `fr`）
+2. 创建 `messages.json` 文件，添加所有翻译键值对
 3. 在设置页面添加语言选项
 
 ### 下载管理
 
-下载管理通过 Chrome Downloads API 实现，后台 Service Worker 监听下载事件，popup 页面实时同步状态。
+下载管理通过 Chrome Downloads API 实现：
+
+- 后台 Service Worker 监听 `chrome.downloads.onCreated` 和 `chrome.downloads.onChanged` 事件
+- 实时同步下载状态到 popup 页面
+- 支持文件存在性检测，自动标识已删除的文件
+- 分页数据持久化存储，保持用户偏好设置
 
 ## 🔧 配置说明
 
@@ -186,8 +202,9 @@ yarn build
 ### vite.config.ts
 
 Vite 构建配置，包含：
+
 - 浏览器插件特殊打包逻辑
-- Less 预处理器配置
+- SCSS 预处理器配置
 - 路径别名配置
 
 ## 📄 许可证
@@ -201,4 +218,3 @@ MIT License
 ## 📮 反馈
 
 如有问题或建议，请提交 Issue。
-
