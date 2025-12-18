@@ -1,0 +1,653 @@
+@import 'animate.css';
+
+// 全局样式重置
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 800px;
+  height: 600px;
+  min-width: 800px;
+  min-height: 600px;
+  max-width: 800px;
+  max-height: 600px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  background: $bg-primary;
+  color: $text-primary;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  min-width: 800px;
+  min-height: 600px;
+  max-width: 800px;
+  max-height: 600px;
+  background: $gradient-bg;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: $text-primary;
+  font-size: 16px;
+}
+
+// 现代背景效果 - 适配浅色和深色主题，浅色主题下更明亮
+.tech-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+}
+
+// 深色主题下的背景效果
+[data-theme='dark-night'] .tech-bg {
+  opacity: 0.25;
+
+  &::before {
+    background-image: 
+      linear-gradient(rgba(96, 165, 250, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96, 165, 250, 0.1) 1px, transparent 1px);
+  }
+
+  &::after {
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.12) 0%, transparent 70%);
+  }
+}
+
+// 浅色主题下的背景效果 - 更明亮
+:root .tech-bg,
+[data-theme='minimal-white'] .tech-bg,
+[data-theme='tech-blue'] .tech-bg,
+[data-theme='cyber-purple'] .tech-bg,
+[data-theme='nature-green'] .tech-bg {
+  opacity: 0.25;
+
+  &::before {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.015) 1px, transparent 1px);
+  }
+
+  &::after {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.02) 0%, transparent 70%);
+  }
+}
+
+// 磨砂玻璃效果
+.glass-effect {
+  background: $bg-glass;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+}
+
+// 卡片样式
+.tech-card {
+  background: $bg-secondary;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  padding: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(59, 130, 246, 0.05),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    border-color: $border-hover;
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+    background: $bg-tertiary;
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+// 按钮样式
+.tech-button {
+  background: $gradient-primary;
+  border: none;
+  border-radius: $radius-md;
+  padding: 8px 16px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+
+    &::before {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// 进度条样式
+.tech-progress {
+  width: 100%;
+  height: 6px;
+  background: $bg-tertiary;
+  border-radius: $radius-md;
+  overflow: hidden;
+  position: relative;
+
+  &__bar {
+    height: 100%;
+    background: $gradient-primary;
+    border-radius: $radius-md;
+    position: relative;
+    transition: width 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      animation: shimmer 2s infinite;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-tertiary;
+  border-radius: $radius-md;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $border-color;
+  border-radius: $radius-md;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: $border-hover;
+  }
+}
+
+// ElementPlus 组件样式覆盖 - 使用 Element Plus CSS 变量
+.el-button {
+  border-radius: $radius-md !important;
+  margin-left: 0;
+
+  // 在 flex 容器中使用 gap 时，重置 margin
+  + .el-button {
+    margin-left: 0;
+  }
+}
+
+// 输入框样式 - 使用 Element Plus CSS 变量
+.el-input {
+  .el-input__wrapper {
+    border-radius: $radius-md !important;
+    box-shadow: none;
+
+    &.is-focus {
+      box-shadow: 0 0 0 2px var(--el-color-primary-light-9);
+      border-radius: $radius-md !important;
+    }
+  }
+
+  .el-input__inner {
+    border-radius: $radius-md;
+  }
+}
+
+// 数字输入框
+.el-input-number {
+  .el-input__wrapper {
+    border-radius: $radius-md !important;
+  }
+}
+
+// 选择器样式 - 使用 Element Plus CSS 变量
+.el-select {
+  .el-select__wrapper {
+    border-radius: $radius-md !important;
+    box-shadow: none;
+
+    &.is-focused {
+      border-radius: $radius-md !important;
+      box-shadow: none; // 确保 focus 状态下没有 box-shadow
+      outline: none; // 移除浏览器默认的 outline
+    }
+  }
+}
+
+// 下拉选择框 - 使用 Element Plus CSS 变量
+// 注意：Element Plus 的下拉列表通过 el-popper 渲染，边框应该设置在 popper 上
+.el-select-dropdown {
+  background: var(--el-bg-color-overlay);
+  border: none; // 移除内层边框，避免重复
+  border-radius: $radius-md !important;
+  overflow: hidden;
+
+  .el-select-dropdown__item {
+    color: var(--el-text-color-regular);
+    border-radius: $radius-sm;
+    margin: 2px 4px;
+
+    &:hover {
+      background: var(--el-fill-color-light);
+      border-radius: $radius-sm;
+    }
+
+    &.is-selected {
+      color: var(--el-color-primary);
+      background: var(--el-color-primary-light-9);
+    }
+  }
+}
+
+// Element Plus popper 容器样式（下拉列表的外层容器）
+.el-popper.is-select-dropdown {
+  border: 1px solid var(--el-border-color);
+  border-radius: $radius-md !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+// 日期选择器
+.el-date-editor {
+  .el-input__wrapper {
+    border-radius: $radius-md !important;
+  }
+}
+
+// 复选框
+.el-checkbox {
+  .el-checkbox__input {
+    .el-checkbox__inner {
+      border-radius: $radius-sm !important;
+    }
+  }
+}
+
+// 单选框
+.el-radio {
+  .el-radio__input {
+    .el-radio__inner {
+      border-radius: 50%;
+    }
+  }
+}
+
+// 开关
+.el-switch {
+  .el-switch__core {
+    border-radius: $radius-xl !important;
+  }
+}
+
+// 文本域 - 使用 Element Plus CSS 变量
+.el-textarea {
+  .el-textarea__inner {
+    border-radius: $radius-md !important;
+
+    &:focus {
+      border-radius: $radius-md !important;
+    }
+  }
+}
+
+// 表单 - 使用 Element Plus CSS 变量
+.el-form-item {
+  .el-form-item__label {
+    color: var(--el-text-color-primary);
+  }
+}
+
+// 分割线 - 使用 Element Plus CSS 变量
+.el-divider {
+  border-color: var(--el-border-color);
+}
+
+.el-table {
+  background: transparent;
+  color: var(--el-text-color-primary);
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  .el-table__header {
+    background: var(--el-fill-color-light);
+  }
+
+  .el-table__row {
+    background: var(--el-bg-color);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--el-fill-color-light);
+    }
+  }
+
+  .el-table__cell {
+    border-color: var(--el-border-color);
+  }
+}
+
+// 表格单元格圆角
+.el-table__cell {
+  &:first-child {
+    border-top-left-radius: $radius-sm;
+    border-bottom-left-radius: $radius-sm;
+  }
+
+  &:last-child {
+    border-top-right-radius: $radius-sm;
+    border-bottom-right-radius: $radius-sm;
+  }
+}
+
+.el-dialog {
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color);
+  border-radius: $radius-lg;
+  max-height: 560px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+
+  .el-dialog__header {
+    border-bottom: 1px solid var(--el-border-color);
+    flex-shrink: 0;
+    padding: 10px 20px;
+  }
+
+  .el-dialog__title {
+    color: var(--el-text-color-primary);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .el-dialog__body {
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .el-dialog__footer {
+    flex-shrink: 0;
+    border-top: 1px solid var(--el-border-color);
+    padding: 10px 20px;
+  }
+}
+
+// 设置弹窗特殊样式
+.settings-dialog {
+  .el-dialog__body {
+    overflow: hidden;
+    position: relative;
+    max-height: calc(560px - 80px); // 弹窗总高度减去头部和底部高度（已减小）
+  }
+  
+  .settings-container {
+    width: 100%;
+    max-height: 480px; // 内容区域最大高度
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
+
+.el-notification {
+  background: var(--el-bg-color-overlay);
+  border: 1px solid var(--el-border-color);
+  border-radius: $radius-lg !important;
+  backdrop-filter: blur(10px);
+}
+
+// 标签页
+.el-tabs {
+  .el-tabs__header {
+    .el-tabs__nav {
+      border-radius: $radius-md;
+    }
+
+    .el-tabs__item {
+      border-radius: $radius-sm;
+      margin: 0 2px;
+    }
+  }
+}
+
+// 分页器
+.el-pagination {
+  .el-pager li {
+    border-radius: $radius-sm !important;
+  }
+
+  .btn-prev,
+  .btn-next {
+    border-radius: $radius-sm !important;
+  }
+}
+
+// 消息提示 - 使用 Element Plus CSS 变量
+.el-message {
+  background: var(--el-bg-color-overlay);
+  border: 1px solid var(--el-border-color);
+  border-radius: $radius-md !important;
+  backdrop-filter: blur(10px);
+}
+
+// 消息框（MessageBox）- 使用 Element Plus CSS 变量
+.el-message-box {
+  background: var(--el-bg-color-overlay);
+  border: 1px solid var(--el-border-color);
+  border-radius: $radius-md !important;
+  backdrop-filter: blur(10px);
+
+  .el-message-box__header {
+    padding: 20px 20px 10px;
+  }
+
+  .el-message-box__title {
+    color: var(--el-text-color-primary);
+    font-weight: 600;
+  }
+
+  .el-message-box__content {
+    padding: 10px 20px;
+    color: var(--el-text-color-regular);
+  }
+
+  .el-message-box__btns {
+    padding: 10px 20px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    .el-button {
+      margin-left: 0;
+    }
+  }
+}
+
+// 弹出框 - 使用 Element Plus CSS 变量
+.el-popover {
+  background: var(--el-bg-color-overlay);
+  border: 1px solid var(--el-border-color);
+  border-radius: $radius-md !important;
+  backdrop-filter: blur(10px);
+}
+
+// 工具提示 - 使用 Element Plus CSS 变量
+.el-tooltip__popper {
+  background: var(--el-bg-color-overlay);
+  border: 1px solid var(--el-border-color);
+  border-radius: $radius-md !important;
+  backdrop-filter: blur(10px);
+  color: var(--el-text-color-primary);
+}
+
+// 菜单 - 使用 Element Plus CSS 变量
+.el-menu {
+  background: var(--el-bg-color);
+  border-radius: $radius-md;
+
+  .el-menu-item {
+    color: var(--el-text-color-regular);
+    border-radius: $radius-sm;
+    margin: 2px 4px;
+
+    &:hover {
+      background: var(--el-fill-color-light);
+      border-radius: $radius-sm;
+    }
+
+    &.is-active {
+      color: var(--el-color-primary);
+      background: var(--el-color-primary-light-9);
+    }
+  }
+}
+
+// 卡片
+.el-card {
+  border-radius: $radius-md !important;
+  overflow: hidden;
+}
+
+// 抽屉
+.el-drawer {
+  .el-drawer__header {
+    border-radius: $radius-md $radius-md 0 0;
+  }
+}
+
+// 全局输入框、按钮等元素的圆角覆盖
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  border-radius: $radius-md !important;
+}
+
+// 确保所有按钮都有圆角
+button {
+  border-radius: $radius-md !important;
+}
