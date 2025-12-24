@@ -54,36 +54,12 @@
     </DownloadListContent>
 
     <!-- 设置对话框 -->
-    <el-dialog
-      v-model="showSettings"
-      :title="$t('settingsTitle')"
-      width="600px"
-      class="settings-dialog"
-    >
-      <component
-        :is="SettingsComponent"
-        v-if="showSettings"
-        ref="settingsComponentRef"
-      />
-      <template #footer>
-        <div class="dialog-footer">
-          <el-button @click="handleSettingsReset">
-            {{ $t('commonReset') }}
-          </el-button>
-          <el-button
-            type="primary"
-            @click="handleSettingsSave"
-          >
-            {{ $t('commonSave') }}
-          </el-button>
-        </div>
-      </template>
-    </el-dialog>
+    <SettingsDialog v-model="showSettings" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, shallowRef, type Component } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useDownloadStore } from '@/store/download'
 import { useSettingsStore } from '@/store/settings'
 import { SortBy, SortOrder } from '@/types/download'
@@ -91,17 +67,14 @@ import DownloadItem from '@/components/DownloadItem.vue'
 import DownloadHeader from '@/components/DownloadList/DownloadHeader.vue'
 import FilterBar from '@/components/DownloadList/FilterBar.vue'
 import DownloadListContent from '@/components/DownloadList/DownloadListContent.vue'
+import SettingsDialog from '@/components/DownloadList/SettingsDialog.vue'
 import type { ThemeName } from '@/utils/theme'
 import { useI18n } from 'vue-i18n'
 import type { Locale } from '@/i18n/types'
 
-// 动态导入 Settings 组件，实现代码分割
-const SettingsComponent = shallowRef<Component | null>(null)
-const settingsComponentRef = ref<{ handleSave:() => void; handleReset: () => void } | null>(null)
-
 const downloadStore = useDownloadStore()
 const settingsStore = useSettingsStore()
-const { t: $t, locale: i18nLocale } = useI18n()
+const { locale: i18nLocale } = useI18n()
 
 onMounted(() => {
   currentTheme.value = settingsStore.theme
@@ -154,26 +127,6 @@ watch(
     // 通过 vue-i18n 切换语言
     i18nLocale.value = newLocale
   }
-)
-
-// 懒加载 Settings 组件
-watch(
-  showSettings,
-  async(newVal: boolean) => {
-    if (newVal && !SettingsComponent.value) {
-      try {
-        // 使用动态导入，确保路径正确
-        const module = await import(/* @vite-ignore */ '@/views/Settings.vue')
-        SettingsComponent.value = module.default as any
-      } catch (error) {
-        console.error('Failed to load Settings component:', error)
-        // 如果动态导入失败，尝试直接导入
-        const SettingsModule = await import('@/views/Settings.vue')
-        SettingsComponent.value = SettingsModule.default as any
-      }
-    }
-  },
-  { immediate: true }
 )
 
 const stats = computed(() => downloadStore.stats)
@@ -254,19 +207,6 @@ const handleLoadMore = () => {
   downloadStore.loadMoreItems(10)
 }
 
-// 处理设置保存
-const handleSettingsSave = () => {
-  if (settingsComponentRef.value && typeof settingsComponentRef.value.handleSave === 'function') {
-    settingsComponentRef.value.handleSave()
-  }
-}
-
-// 处理设置重置
-const handleSettingsReset = () => {
-  if (settingsComponentRef.value && typeof settingsComponentRef.value.handleReset === 'function') {
-    settingsComponentRef.value.handleReset()
-  }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -732,12 +672,5 @@ const handleSettingsReset = () => {
 
 .list-move {
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-// 设置对话框 footer 样式 - 按钮右对齐
-.dialog-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
 }
 </style>

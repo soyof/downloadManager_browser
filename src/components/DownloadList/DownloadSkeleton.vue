@@ -5,42 +5,37 @@
       :key="i"
       class="download-item tech-card skeleton-item"
     >
-      <!-- 进度背景层（可选） -->
-      <div
-        v-if="showProgress"
-        class="skeleton-progress-bg"
-      ></div>
-
       <div class="item-main">
         <!-- 第一行：文件信息和状态标签 -->
         <div class="item-main-top">
-          <!-- 文件信息区域 (item-info) -->
+          <!-- 文件信息区域 (item-info) - 完全匹配 FileInfo 组件结构 -->
           <div class="item-info">
-            <!-- 文件图标 -->
+            <!-- 文件图标 - 匹配 FileInfo 的 .file-icon -->
             <div class="file-icon skeleton-icon"></div>
 
-            <!-- 文件信息 (file-info) -->
+            <!-- 文件信息容器 - 匹配 FileInfo 的 .file-info -->
             <div class="file-info">
-              <!-- 文件名 -->
+              <!-- 文件名 - 匹配 FileInfo 的 .file-name -->
               <div class="file-name skeleton-line skeleton-filename"></div>
 
-              <!-- 文件详情 (file-meta/download-details) -->
+              <!-- 文件详情 - 匹配 FileInfo 的 .file-meta 或 .download-details -->
               <div class="file-meta skeleton-line skeleton-meta"></div>
 
-              <!-- 操作按钮和来源信息 (file-actions-row) -->
+              <!-- 操作按钮和来源信息 - 匹配 FileInfo 的 .file-actions-row -->
               <div class="file-actions-row">
-                <!-- 操作按钮 (file-actions) -->
+                <!-- 操作按钮容器 - 匹配 FileInfo 的 .file-actions -->
                 <div class="file-actions skeleton-actions">
                   <div class="skeleton-button"></div>
                   <div class="skeleton-button"></div>
                   <div class="skeleton-button"></div>
                   <div class="skeleton-button"></div>
                 </div>
+                <!-- 下载来源（可选，骨架屏中不显示） -->
               </div>
             </div>
           </div>
 
-          <!-- 状态标签 (StatusBadge) -->
+          <!-- 状态标签 - 匹配 StatusBadge 组件 -->
           <div class="skeleton-badge"></div>
         </div>
       </div>
@@ -51,10 +46,8 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
   count?: number
-  showProgress?: boolean
 }>(), {
-  count: 6,
-  showProgress: true
+  count: 6
 })
 </script>
 
@@ -97,16 +90,6 @@ withDefaults(defineProps<{
   }
 }
 
-.skeleton-progress-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 70%;
-  background: var(--el-color-primary-light-9);
-  opacity: 0.5;
-  z-index: 0;
-}
 
 .item-main {
   position: relative;
@@ -132,14 +115,24 @@ withDefaults(defineProps<{
 }
 
 .skeleton-icon {
+  font-size: 32px;
   width: 32px;
   height: 32px;
-  border-radius: 6px;
-  background: var(--el-fill-color-darker);
+  line-height: 1;
   flex-shrink: 0;
+  background: var(--el-fill-color-darker);
+  border-radius: 6px;
   animation: skeleton-pulse 1.5s ease-in-out infinite;
   border: 1px solid var(--el-border-color);
-  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 .file-info {
@@ -157,18 +150,26 @@ withDefaults(defineProps<{
   border: 1px solid var(--el-border-color-light);
 
   &.skeleton-filename {
-    height: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 20px; // 14px font-size + 4px margin-bottom + 2px line-height
     width: 60%;
     margin-bottom: 4px;
     background: var(--el-fill-color-darker);
+    display: flex;
+    align-items: center;
   }
 
   &.skeleton-meta {
-    height: 12px;
+    font-size: 12px;
+    height: 16.8px; // 匹配真实数据的固定高度
+    min-height: 16.8px;
     width: 50%;
     margin-bottom: 4px;
-    min-height: 16.8px;
     background: var(--el-fill-color-dark);
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
   }
 }
 
@@ -188,6 +189,7 @@ withDefaults(defineProps<{
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .skeleton-button {
@@ -217,14 +219,20 @@ withDefaults(defineProps<{
 }
 
 .skeleton-badge {
-  width: 60px;
-  height: 24px;
-  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  min-width: 60px;
+  height: 20px;
   background: var(--el-fill-color-darker);
   border: 1px solid var(--el-border-color);
   flex-shrink: 0;
   animation: skeleton-pulse 1.5s ease-in-out infinite;
   animation-delay: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes skeleton-pulse {
@@ -259,11 +267,6 @@ withDefaults(defineProps<{
         transparent
       );
     }
-  }
-
-  .skeleton-progress-bg {
-    background: var(--el-color-primary-light-9);
-    opacity: 0.4;
   }
 
   .skeleton-icon,

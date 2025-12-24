@@ -4,9 +4,9 @@
       ref="listContainerRef"
       class="download-list"
     >
-      <!-- 使用 transition 包裹，mode="out-in" 确保列表先消失，空状态再出现 -->
+      <!-- 使用 transition 包裹，优化过渡效果，避免闪烁 -->
       <transition
-        name="fade"
+        name="smooth-fade"
         mode="out-in"
       >
         <!-- Loading 状态 - 骨架屏 -->
@@ -14,7 +14,6 @@
           v-if="isLoading"
           key="loading"
           :count="pageSize"
-          :showProgress="true"
         />
 
         <!-- 有数据时显示列表 -->
@@ -412,14 +411,22 @@ watch(() => props.useScrollLoad, (newVal) => {
   --animate-duration: 0.3s;
 }
 
-// 淡入淡出动画
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+// 平滑淡入淡出动画 - 优化骨架屏到真实数据的过渡，避免闪烁
+.smooth-fade-enter-active {
+  transition: opacity 0.15s ease-out;
+  will-change: opacity;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.smooth-fade-leave-active {
+  transition: opacity 0.1s ease-in;
+  will-change: opacity;
+}
+
+.smooth-fade-enter-from {
+  opacity: 0;
+}
+
+.smooth-fade-leave-to {
   opacity: 0;
 }
 

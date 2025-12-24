@@ -1,133 +1,166 @@
 <template>
-  <div class="settings-container">
-    <!-- 下载完成行为 -->
-    <div class="settings-section">
-      <div class="section-title">
-        {{ $t('settingsDownloadBehavior') }}
-      </div>
-      <div class="settings-group">
-        <div class="setting-item">
-          <div class="setting-content">
-            <div class="setting-label">
-              {{ $t('settingsOpenFolder') }}
+  <el-dialog
+    v-model="dialogVisible"
+    :title="$t('settingsTitle')"
+    width="600px"
+    class="settings-dialog"
+    transition="dialog-bounce"
+  >
+    <div class="settings-container">
+      <!-- 下载完成行为 -->
+      <div class="settings-section">
+        <div class="section-title">
+          {{ $t('settingsDownloadBehavior') }}
+        </div>
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-content">
+              <div class="setting-label">
+                {{ $t('settingsOpenFolder') }}
+              </div>
+              <div class="setting-description">
+                {{ $t('settingsOpenFolderDesc') }}
+              </div>
             </div>
-            <div class="setting-description">
-              {{ $t('settingsOpenFolderDesc') }}
-            </div>
+            <el-switch v-model="formData.openFolder" />
           </div>
-          <el-switch v-model="formData.openFolder" />
+        </div>
+      </div>
+
+      <!-- 通知设置 -->
+      <div class="settings-section">
+        <div class="section-title">
+          {{ $t('settingsNotification') }}
+        </div>
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-content">
+              <div class="setting-label">
+                {{ $t('settingsShowNotification') }}
+              </div>
+              <div class="setting-description">
+                {{ $t('settingsShowNotificationDesc') }}
+              </div>
+            </div>
+            <el-switch v-model="formData.showNotification" />
+          </div>
+          <div class="setting-item">
+            <div class="setting-content">
+              <div class="setting-label">
+                {{ $t('settingsPlaySound') }}
+              </div>
+              <div class="setting-description">
+                {{ $t('settingsPlaySoundDesc') }}
+              </div>
+            </div>
+            <el-switch v-model="formData.playSound" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 列表显示设置 -->
+      <div class="settings-section">
+        <div class="section-title">
+          {{ $t('settingsListDisplay') }}
+        </div>
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-content">
+              <div class="setting-label">
+                {{ $t('settingsUseScrollLoad') }}
+              </div>
+              <div class="setting-description">
+                {{ $t('settingsUseScrollLoadDesc') }}
+              </div>
+            </div>
+            <el-switch v-model="formData.useScrollLoad" />
+          </div>
+          <div
+            v-if="formData.useScrollLoad"
+            class="setting-item nested"
+          >
+            <div class="setting-content">
+              <div class="setting-label">
+                {{ $t('settingsScrollLoadInitialSize') }}
+              </div>
+              <div class="setting-description">
+                {{ $t('settingsScrollLoadInitialSizeDesc') }}
+              </div>
+            </div>
+            <el-input-number
+              v-model="formData.scrollLoadInitialSize"
+              :min="5"
+              :max="50"
+              :step="5"
+              class="retry-input"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 删除确认设置 -->
+      <div class="settings-section">
+        <div class="section-title">
+          {{ $t('settingsDeleteConfirm') }}
+        </div>
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-content">
+              <div class="setting-label">
+                {{ $t('settingsConfirmDelete') }}
+              </div>
+              <div class="setting-description">
+                {{ $t('settingsConfirmDeleteDesc') }}
+              </div>
+            </div>
+            <el-switch v-model="formData.confirmDelete" />
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- 通知设置 -->
-    <div class="settings-section">
-      <div class="section-title">
-        {{ $t('settingsNotification') }}
-      </div>
-      <div class="settings-group">
-        <div class="setting-item">
-          <div class="setting-content">
-            <div class="setting-label">
-              {{ $t('settingsShowNotification') }}
-            </div>
-            <div class="setting-description">
-              {{ $t('settingsShowNotificationDesc') }}
-            </div>
-          </div>
-          <el-switch v-model="formData.showNotification" />
-        </div>
-        <div class="setting-item">
-          <div class="setting-content">
-            <div class="setting-label">
-              {{ $t('settingsPlaySound') }}
-            </div>
-            <div class="setting-description">
-              {{ $t('settingsPlaySoundDesc') }}
-            </div>
-          </div>
-          <el-switch v-model="formData.playSound" />
-        </div>
-      </div>
-    </div>
-
-    <!-- 列表显示设置 -->
-    <div class="settings-section">
-      <div class="section-title">
-        {{ $t('settingsListDisplay') }}
-      </div>
-      <div class="settings-group">
-        <div class="setting-item">
-          <div class="setting-content">
-            <div class="setting-label">
-              {{ $t('settingsUseScrollLoad') }}
-            </div>
-            <div class="setting-description">
-              {{ $t('settingsUseScrollLoadDesc') }}
-            </div>
-          </div>
-          <el-switch v-model="formData.useScrollLoad" />
-        </div>
-        <div
-          v-if="formData.useScrollLoad"
-          class="setting-item nested"
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button @click="handleReset">
+          {{ $t('commonReset') }}
+        </el-button>
+        <el-button
+          type="primary"
+          @click="handleSave"
         >
-          <div class="setting-content">
-            <div class="setting-label">
-              {{ $t('settingsScrollLoadInitialSize') }}
-            </div>
-            <div class="setting-description">
-              {{ $t('settingsScrollLoadInitialSizeDesc') }}
-            </div>
-          </div>
-          <el-input-number
-            v-model="formData.scrollLoadInitialSize"
-            :min="5"
-            :max="50"
-            :step="5"
-            class="retry-input"
-          />
-        </div>
+          {{ $t('commonSave') }}
+        </el-button>
       </div>
-    </div>
-
-    <!-- 删除确认设置 -->
-    <div class="settings-section">
-      <div class="section-title">
-        {{ $t('settingsDeleteConfirm') }}
-      </div>
-      <div class="settings-group">
-        <div class="setting-item">
-          <div class="setting-content">
-            <div class="setting-label">
-              {{ $t('settingsConfirmDelete') }}
-            </div>
-            <div class="setting-description">
-              {{ $t('settingsConfirmDeleteDesc') }}
-            </div>
-          </div>
-          <el-switch v-model="formData.confirmDelete" />
-        </div>
-      </div>
-    </div>
-  </div>
+    </template>
+  </el-dialog>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ElMessage } from 'element-plus'
 import { useSettingsStore } from '@/store/settings'
-
-const emit = defineEmits<{
-  close: []
-}>()
+import type { DownloadSettings } from '@/types/download'
 
 const { t: $t } = useI18n()
 const settingsStore = useSettingsStore()
 
-import type { DownloadSettings } from '@/types/download'
+// Props
+const props = defineProps<{
+  modelValue: boolean
+}>()
 
+// Emits
+const emit = defineEmits<{
+  'update:modelValue': [value: boolean]
+}>()
+
+// 弹窗显示状态
+const dialogVisible = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value)
+})
+
+// 表单数据
 const formData = ref<Partial<DownloadSettings>>({
   openFolder: false,
   showNotification: true,
@@ -137,23 +170,31 @@ const formData = ref<Partial<DownloadSettings>>({
   confirmDelete: true // 默认需要二次确认
 })
 
-onMounted(async() => {
-  // 确保设置已加载
-  await settingsStore.loadSettings()
+// 当弹窗打开时加载设置
+watch(
+  dialogVisible,
+  async(newVal: boolean) => {
+    if (newVal) {
+      // 确保设置已加载
+      await settingsStore.loadSettings()
 
-  // 加载当前设置
-  const settings = settingsStore.downloadSettings
-  formData.value = {
-    openFolder: settings.openFolder ?? false,
-    showNotification: settings.showNotification ?? true,
-    playSound: settings.playSound ?? false,
-    useScrollLoad: settings.useScrollLoad ?? false,
-    scrollLoadInitialSize: settings.scrollLoadInitialSize ?? 10,
-    confirmDelete: settings.confirmDelete ?? true
-  }
-})
+      // 加载当前设置
+      const settings = settingsStore.downloadSettings
+      formData.value = {
+        openFolder: settings.openFolder ?? false,
+        showNotification: settings.showNotification ?? true,
+        playSound: settings.playSound ?? false,
+        useScrollLoad: settings.useScrollLoad ?? false,
+        scrollLoadInitialSize: settings.scrollLoadInitialSize ?? 10,
+        confirmDelete: settings.confirmDelete ?? true
+      }
+    }
+  },
+  { immediate: true }
+)
 
-async function handleSave() {
+// 处理设置保存
+const handleSave = async() => {
   try {
     settingsStore.updateDownloadSettings({
       openFolder: formData.value.openFolder,
@@ -176,13 +217,14 @@ async function handleSave() {
     })
 
     ElMessage.success($t('settingsSaveSuccess'))
-    emit('close')
+    dialogVisible.value = false
   } catch (error) {
     console.error('Failed to save settings:', error)
     ElMessage.error($t('settingsSaveFailed'))
   }
 }
 
+// 处理设置重置
 const handleReset = () => {
   settingsStore.updateDownloadSettings({
     openFolder: false,
@@ -202,20 +244,13 @@ const handleReset = () => {
   }
   ElMessage.success($t('settingsSaveSuccess'))
 }
-
-// 暴露方法供父组件调用
-defineExpose({
-  handleSave,
-  handleReset
-})
 </script>
 
 <style lang="scss" scoped>
+/* 设置容器滚动条样式（scoped，仅在此组件生效） */
+/* 注意：.settings-container 的基础样式在 main.scss 的 .settings-dialog 下定义 */
 .settings-container {
-  width: 100%;
-  box-sizing: border-box;
-
-  // 自定义滚动条样式
+  /* 自定义滚动条样式 */
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -234,9 +269,11 @@ defineExpose({
   }
 }
 
+/* 注意：.dialog-footer 样式在 main.scss 的 .settings-dialog 下定义，这里不需要重复定义 */
+
 .settings-section {
   margin-bottom: 20px;
-  padding: 0;
+  padding: 0; // 移除单独设置的 padding，由弹窗统一管理
 
   &:first-child {
     margin-top: 4px;
@@ -367,7 +404,7 @@ defineExpose({
 }
 
 :deep(.el-radio) {
-  color: $text-primary;
+  color: var(--el-text-color-primary);
   font-size: 13px;
   margin-right: 0;
   margin-bottom: 0;
@@ -419,3 +456,4 @@ defineExpose({
   }
 }
 </style>
+

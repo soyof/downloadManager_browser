@@ -279,6 +279,11 @@ body {
   border-radius: $radius-md !important;
   margin-left: 0;
 
+  // 圆形按钮保持圆形，不受全局 border-radius 影响
+  &.is-circle {
+    border-radius: 50% !important;
+  }
+
   // 在 flex 容器中使用 gap 时，重置 margin
   + .el-button {
     margin-left: 0;
@@ -537,18 +542,49 @@ body {
   }
 }
 
+// Bounce 动画 - 参考 Element Plus 官方示例
+.dialog-bounce-enter-active,
+.dialog-bounce-leave-active,
+.dialog-bounce-enter-active .el-dialog,
+.dialog-bounce-leave-active .el-dialog {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dialog-bounce-enter-from,
+.dialog-bounce-leave-to {
+  opacity: 0;
+}
+
+.dialog-bounce-enter-from .el-dialog,
+.dialog-bounce-leave-to .el-dialog {
+  transform: scale(0.3) translateY(-50px);
+  opacity: 0;
+}
+
 // 设置弹窗特殊样式 - 参考 macOS/Chrome 设计
 .settings-dialog {
-  .el-dialog {
+  // 使用弹窗的 padding，统一管理
+  &.el-dialog {
     max-height: calc(100vh - 80px);
     width: 560px;
     height: auto;
-    padding: 0 24px;
+    padding: 16px; // 统一使用弹窗的 padding
+    box-sizing: border-box;
   }
 
   .el-dialog__header {
     flex-shrink: 0;
-    padding: 0 0 12px 0;
+    padding: 0 0 12px 0; // 只设置底部间距
+  }
+
+  .el-dialog__headerbtn {
+    top: 12px !important; // 设置关闭按钮的 top 为 12px，避免样式错乱
+    right: 12px !important; // 同时调整 right，与 padding 保持一致
+  }
+
+  .el-dialog__title {
+    font-size: 16px !important; // 减小 header 字体大小（从 20px 改为 16px）
+    font-weight: 600;
   }
 
   .el-dialog__body {
@@ -556,7 +592,7 @@ body {
     position: relative;
     flex: 1;
     min-height: 0;
-    padding: 0;
+    padding: 0; // body 不需要 padding，由外层弹窗统一管理
     display: flex;
     flex-direction: column;
   }
@@ -566,13 +602,13 @@ body {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 8px 0;
+    padding: 8px 0; // 只设置上下 padding
     min-height: 0;
   }
 
   .el-dialog__footer {
     flex-shrink: 0;
-    padding: 12px 0 0 0;
+    padding: 12px 0 0 0; // 只设置顶部间距
   }
 
   .dialog-footer {

@@ -1,0 +1,161 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'package.json'
+      - 'public/manifest.json'
+
+# 配置工作流权限
+permissions:
+  contents: write # 允许创建 tag 和 release
+  actions: read # 允许读取工作流状态
+
+jobs:
+  detect-version-change:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      changed: ${{ steps.check.outputs.changed }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $VERSION"
+
+      - name: Check if version changed
+        id: check
+        run: |
+          CURRENT_VERSION="${{ steps.version.outputs.version }}"
+
+          # 获取最新的 tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No existing tags found, version changed"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            # 移除 'v' 前缀（如果有）
+            LATEST_VERSION=${LATEST_TAG#v}
+            
+            if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
+              echo "Version changed from $LATEST_VERSION to $CURRENT_VERSION"
+              echo "changed=true" >> $GITHUB_OUTPUT
+            else
+              echo "Version unchanged: $CURRENT_VERSION"
+              echo "changed=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Verify manifest.json version matches
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          PKG_VERSION="${{ steps.version.outputs.version }}"
+          MANIFEST_VERSION=$(node -p "require('./public/manifest.json').version")
+
+          if [ "$PKG_VERSION" != "$MANIFEST_VERSION" ]; then
+            echo "Error: package.json version ($PKG_VERSION) does not match manifest.json version ($MANIFEST_VERSION)"
+            exit 1
+          fi
+          echo "Version consistency check passed: $PKG_VERSION"
+
+  create-tag:
+    needs: detect-version-change
+    if: needs.detect-version-change.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 需要写入权限来创建和推送 tag
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create tag
+        id: tag
+        run: |
+          VERSION="${{ needs.detect-version-change.outputs.version }}"
+          TAG_NAME="v${VERSION}"
+
+          # 检查 tag 是否已存在
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME already exists, skipping"
+            echo "created=false" >> $GITHUB_OUTPUT
+          else
+            git tag -a "$TAG_NAME" -m "Release version $VERSION"
+            git push origin "$TAG_NAME"
+            echo "Tag $TAG_NAME created and pushed"
+            echo "created=true" >> $GITHUB_OUTPUT
+            echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
+          fi
+
+  create-release:
+    needs: [detect-version-change, create-tag]
+    if: needs.detect-version-change.outputs.changed == 'true' && needs.create-tag.outputs.created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 需要写入权限来创建 release 和上传文件
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Create zip archive
+        run: |
+          cd dist
+          zip -r ../download-manager-v${{ needs.detect-version-change.outputs.version }}.zip .
+          cd ..
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ needs.create-tag.outputs.tag }}
+          name: Release ${{ needs.create-tag.outputs.tag }}
+          body: |
+            ## 版本 ${{ needs.detect-version-change.outputs.version }}
+
+            ### 变更内容
+            查看 [提交历史](https://github.com/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}) 了解详细变更
+
+            ### 安装说明
+            1. 下载 `download-manager-v${{ needs.detect-version-change.outputs.version }}.zip`
+            2. 解压文件
+            3. 打开 Chrome/Edge，访问 `chrome://extensions/` 或 `edge://extensions/`
+            4. 开启"开发者模式"
+            5. 点击"加载已解压的扩展程序"，选择解压后的文件夹
+
+            ### 注意事项
+            - 此版本为开发版本，正式版本请从 Chrome Web Store 安装
+          files: |
+            download-manager-v${{ needs.detect-version-change.outputs.version }}.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
