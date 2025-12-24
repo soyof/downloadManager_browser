@@ -1,6 +1,6 @@
 {
   "name": "download-manager-extension",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "现代科技风浏览器下载管理器插件",
   "type": "module",
   "scripts": {

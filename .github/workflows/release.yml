@@ -128,6 +128,56 @@ jobs:
       - name: Build extension
         run: npm run build
 
+      - name: Extract changelog content
+        id: changelog
+        run: |
+          VERSION="${{ needs.detect-version-change.outputs.version }}"
+
+          # 读取 CHANGELOG.md 并提取对应版本的内容
+          if [ -f CHANGELOG.md ]; then
+            # 使用 awk 提取版本块（从 ## [version] 到下一个 ## 或文件结束）
+            awk -v version="$VERSION" '
+              BEGIN { in_version = 0 }
+              /^## \[/ {
+                if (in_version) exit
+                if ($0 ~ "\\[" version "\\]") {
+                  in_version = 1
+                  next
+                }
+              }
+              in_version {
+                print
+              }
+            ' CHANGELOG.md > changelog_content.txt
+            
+            # 检查是否提取到内容
+            if [ -s changelog_content.txt ]; then
+              echo "Extracted changelog for version $VERSION"
+              # 使用多行输出到 GitHub Actions
+              {
+                echo "content<<EOF"
+                cat changelog_content.txt
+                echo "EOF"
+              } >> $GITHUB_OUTPUT
+            else
+              echo "No changelog found for version $VERSION, using default"
+              {
+                echo "content<<EOF"
+                echo "### 变更内容"
+                echo "查看 [提交历史](https://github.com/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}) 了解详细变更"
+                echo "EOF"
+              } >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "CHANGELOG.md not found, using default"
+            {
+              echo "content<<EOF"
+              echo "### 变更内容"
+              echo "查看 [提交历史](https://github.com/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}) 了解详细变更"
+              echo "EOF"
+            } >> $GITHUB_OUTPUT
+          fi
+
       - name: Install crx package
         run: npm install -g crx
 
@@ -174,8 +224,7 @@ jobs:
           body: |
             ## 版本 ${{ needs.detect-version-change.outputs.version }}
 
-            ### 变更内容
-            查看 [提交历史](https://github.com/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.sha }}) 了解详细变更
+            ${{ steps.changelog.outputs.content }}
 
             ### 安装说明
             1. 下载 `download-manager-v${{ needs.detect-version-change.outputs.version }}.crx` 文件
