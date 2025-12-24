@@ -191,12 +191,17 @@ jobs:
           fi
 
       - name: Build CRX file
+        id: build-crx
         run: |
           VERSION="${{ needs.detect-version-change.outputs.version }}"
           CRX_NAME="download-manager-v${VERSION}.crx"
 
           # 使用 crx 工具打包
-          crx pack dist -o "$CRX_NAME" -p key.pem || {
+          if crx pack dist -o "$CRX_NAME" -p key.pem; then
+            echo "CRX file created successfully: $CRX_NAME"
+            echo "crx_created=true" >> $GITHUB_OUTPUT
+            echo "crx_file=$CRX_NAME" >> $GITHUB_OUTPUT
+          else
             echo "crx pack failed, creating unsigned crx..."
             # 如果 crx 工具失败，创建未签名的 crx
             cd dist
@@ -204,10 +209,13 @@ jobs:
             cd ..
             # 将 zip 重命名为 crx（未签名，但可以手动安装）
             mv extension.zip "$CRX_NAME"
-          }
+            echo "Unsigned CRX file created: $CRX_NAME"
+            echo "crx_created=true" >> $GITHUB_OUTPUT
+            echo "crx_file=$CRX_NAME" >> $GITHUB_OUTPUT
+          fi
 
-          echo "CRX file created: $CRX_NAME"
           ls -lh "$CRX_NAME"
+          echo "CRX file size: $(ls -lh "$CRX_NAME" | awk '{print $5}')"
 
       - name: Create zip archive (fallback)
         run: |
@@ -243,3 +251,12 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload CRX as artifact
+        if: steps.build-crx.outputs.crx_created == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: chrome-extension-crx-v${{ needs.detect-version-change.outputs.version }}
+          path: ${{ steps.build-crx.outputs.crx_file }}
+          retention-days: 90
+          if-no-files-found: error
