@@ -179,7 +179,7 @@
           sortOrder === 'asc' ? $t('downloadSortOrderAsc') : $t('downloadSortOrderDesc')
         "
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           class="sort-order-btn"
@@ -197,7 +197,7 @@
       <el-tooltip
         :content="useScrollLoad ? $t('switchToPagination') : $t('switchToScrollLoad')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           class="switch-mode-btn"
@@ -279,7 +279,7 @@ const { t: $t } = useI18n()
   .sort-group {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     flex-shrink: 0;
   }
 
@@ -327,8 +327,8 @@ const { t: $t } = useI18n()
     }
   }
 
-  // 按钮样式
-  :deep(.el-button) {
+  // 按钮样式（排除图标按钮）
+  :deep(.el-button:not(.switch-mode-btn):not(.sort-order-btn)) {
     padding: 5px 12px;
     height: 28px;
     font-size: 12px;
@@ -350,111 +350,109 @@ const { t: $t } = useI18n()
   }
 
   .switch-mode-btn {
-    width: 28px;
-    height: 28px;
+    width: 28px !important;
+    height: 28px !important;
     padding: 0 !important;
-    margin-left: 6px;
-    background: var(--el-bg-color-page);
-    border: 1px solid var(--el-border-color);
-    color: var(--el-text-color-regular);
-    transition: all 0.2s ease;
-    border-radius: $radius-sm;
-    min-width: 28px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    margin-left: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--el-text-color-regular) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: $radius-sm !important;
+    min-width: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     :deep(.el-button__inner) {
       padding: 0 !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      line-height: 1;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 100% !important;
+      line-height: 1 !important;
     }
 
     :deep(.el-icon) {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 16px !important;
     }
 
     &:hover {
-      background: var(--el-fill-color-light);
-      border-color: var(--el-color-primary-light-7);
-      color: var(--el-color-primary);
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      background: var(--el-fill-color-light) !important;
+      color: var(--el-color-primary) !important;
+      transform: scale(1.05) !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
     }
 
     &:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transform: scale(0.95) !important;
     }
   }
 
   .sort-order-btn {
-    width: 28px;
-    height: 28px;
+    width: 28px !important;
+    height: 28px !important;
     padding: 0 !important;
-    margin-left: 6px;
-    background: var(--el-bg-color-page);
-    border: 1px solid var(--el-border-color);
-    color: var(--el-text-color-regular);
-    transition: all 0.2s ease;
-    border-radius: $radius-sm;
-    min-width: 28px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    margin-left: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--el-text-color-regular) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: $radius-sm !important;
+    min-width: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     :deep(.el-button__inner) {
       padding: 0 !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      line-height: 1;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 100% !important;
+      line-height: 1 !important;
     }
 
     :deep(.el-icon) {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
 
     &:hover {
-      background: var(--el-fill-color-light);
-      border-color: var(--el-color-primary-light-7);
-      color: var(--el-color-primary);
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      background: var(--el-fill-color-light) !important;
+      color: var(--el-color-primary) !important;
+      transform: scale(1.05) !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
     }
 
     &:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transform: scale(0.95) !important;
     }
 
     .sort-icon {
-      font-size: 14px;
-      transition: transform 0.2s ease;
+      font-size: 16px !important;
+      transition: transform 0.2s ease !important;
 
       &.sort-asc {
-        transform: rotate(180deg);
+        transform: rotate(180deg) !important;
       }
 
       &.sort-desc {
-        transform: rotate(0deg);
+        transform: rotate(0deg) !important;
       }
     }
   }

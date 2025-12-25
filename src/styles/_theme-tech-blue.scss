@@ -2,10 +2,10 @@
   --primary-color: #3b82f6;
   --primary-hover: #2563eb;
   --primary-active: #1d4ed8;
-  --bg-primary: #eff6ff;
-  --bg-secondary: #ffffff;
+  --bg-primary: #e8f2ff;
+  --bg-secondary: #f0f7ff;
   --bg-tertiary: #dbeafe;
-  --bg-glass: rgba(255, 255, 255, 0.98);
+  --bg-glass: rgba(240, 247, 255, 0.95);
   --text-primary: #1e3a8a;
   --text-secondary: #1e40af;
   --text-disabled: #93c5fd;
@@ -15,7 +15,7 @@
   --shadow-md: 0 4px 6px rgba(59, 130, 246, 0.1);
   --shadow-lg: 0 10px 15px rgba(59, 130, 246, 0.12);
   --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  --gradient-bg: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  --gradient-bg: linear-gradient(135deg, #e8f2ff 0%, #f0f7ff 100%);
 
   // Element Plus 主题变量 - 完整版
   --el-color-primary: #3b82f6;
@@ -95,9 +95,9 @@
   --el-text-color-secondary: #2563eb;
   --el-text-color-placeholder: #93c5fd;
   --el-text-color-disabled: #bfdbfe;
-  --el-bg-color: #ffffff;
-  --el-bg-color-page: #eff6ff;
-  --el-bg-color-overlay: rgba(255, 255, 255, 0.98);
+  --el-bg-color: #f0f7ff;
+  --el-bg-color-page: #e8f2ff;
+  --el-bg-color-overlay: rgba(240, 247, 255, 0.95);
   --el-border-color: rgba(59, 130, 246, 0.2);
   --el-border-color-light: rgba(59, 130, 246, 0.15);
   --el-border-color-lighter: rgba(59, 130, 246, 0.1);
@@ -110,8 +110,8 @@
   --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
   --el-fill-color: #dbeafe;
   --el-fill-color-light: #eff6ff;
-  --el-fill-color-lighter: #f8fafc;
-  --el-fill-color-extra-light: #fafbfc;
+  --el-fill-color-lighter: #e8f2ff;
+  --el-fill-color-extra-light: #f0f7ff;
   --el-fill-color-dark: #bae6fd;
   --el-fill-color-darker: #7dd3fc;
   --el-fill-color-blank: transparent;
@@ -125,9 +125,7 @@
   --el-overlay-color: rgba(0, 0, 0, 0.8);
   --el-overlay-color-light: rgba(0, 0, 0, 0.7);
   --el-overlay-color-lighter: rgba(0, 0, 0, 0.5);
-  --el-mask-color: rgba(255, 255, 255, 0.9);
-  --el-mask-color-extra-light: rgba(255, 255, 255, 0.3);
+  --el-mask-color: rgba(240, 247, 255, 0.9);
+  --el-mask-color-extra-light: rgba(240, 247, 255, 0.3);
   --el-svg-monochrome-grey: var(--el-border-color);
 }
-
-// 数字薰衣草主题（Digital Lavender）- 2025流行趋势

@@ -47,7 +47,7 @@
     <!-- 文件详情弹窗 -->
     <FileDetailsDialog
       v-model:visible="showDetailsDialog"
-      :download-item="downloadItem"
+      :downloadItem="downloadItem"
     />
   </div>
 </template>

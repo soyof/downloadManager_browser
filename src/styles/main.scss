@@ -283,19 +283,19 @@ body {
 }
 
 // 输入框样式 - 使用 Element Plus CSS 变量
+// 使用 box-shadow inset 代替 border，避免影响盒子高度
 .el-input {
   .el-input__wrapper {
     border-radius: $radius-md !important;
-    border: 1px solid var(--el-border-color) !important;
-    box-shadow: none !important;
+    border: none !important;
+    box-shadow: 0 0 0 1px var(--el-border-color) inset !important;
 
     &:hover {
-      border-color: var(--el-border-color-darker) !important;
+      box-shadow: 0 0 0 1px var(--el-border-color-darker) inset !important;
     }
 
     &.is-focus {
-      border-color: var(--el-color-primary) !important;
-      box-shadow: 0 0 0 2px var(--el-color-primary-light-9) !important;
+      box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 2px var(--el-color-primary-light-9) !important;
       border-radius: $radius-md !important;
     }
   }
@@ -467,150 +467,62 @@ body {
   background: var(--el-bg-color);
   border: none;
   border-radius: 12px;
-  max-height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px !important;
-  margin-bottom: 40px !important;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.05);
+  max-height: calc(100vh - 100px) !important;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   .el-dialog__header {
-    border-bottom: none;
-    flex-shrink: 0;
-    padding: 0 24px 16px;
-    display: flex;
-    align-items: center;
     background: transparent;
+    flex-shrink: 0;
   }
 
   .el-dialog__title {
+    font-size: 16px;
     color: var(--el-text-color-primary);
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.2;
   }
 
-  .el-dialog__headerbtn {
-    top: 20px;
-    right: 20px;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
+  .el-dialog__body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
 
-    &:hover {
-      background: var(--el-fill-color-light);
+    /* 通用滚动条样式 */
+    &::-webkit-scrollbar {
+      width: 4px;
     }
 
-    .el-dialog__close {
-      font-size: 16px;
-      color: var(--el-text-color-regular);
-      transition: color 0.2s ease;
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--el-border-color);
+      border-radius: 3px;
 
       &:hover {
-        color: var(--el-text-color-primary);
+        background: var(--el-text-color-placeholder);
       }
     }
   }
 
-  .el-dialog__body {
-    flex: 1;
-    overflow: hidden;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-  }
-
   .el-dialog__footer {
     flex-shrink: 0;
-    border-top: none;
-    padding: 16px 24px 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background: transparent;
-    gap: 8px;
-  }
-}
 
-// Bounce 动画 - 参考 Element Plus 官方示例
-.dialog-bounce-enter-active,
-.dialog-bounce-leave-active,
-.dialog-bounce-enter-active .el-dialog,
-.dialog-bounce-leave-active .el-dialog {
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+    .dialog-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      width: 100%;
+    }
 
-.dialog-bounce-enter-from,
-.dialog-bounce-leave-to {
-  opacity: 0;
-}
-
-.dialog-bounce-enter-from .el-dialog,
-.dialog-bounce-leave-to .el-dialog {
-  transform: scale(0.3) translateY(-50px);
-  opacity: 0;
-}
-
-// 设置弹窗特殊样式 - 参考 macOS/Chrome 设计
-.settings-dialog {
-  // 使用弹窗的 padding，统一管理
-  &.el-dialog {
-    max-height: calc(100vh - 80px);
-    width: 560px;
-    height: auto;
-    padding: 16px; // 统一使用弹窗的 padding
-    box-sizing: border-box;
-  }
-
-  .el-dialog__header {
-    flex-shrink: 0;
-    padding: 0 0 12px 0; // 只设置底部间距
-  }
-
-  .el-dialog__headerbtn {
-    top: 12px !important; // 设置关闭按钮的 top 为 12px，避免样式错乱
-    right: 12px !important; // 同时调整 right，与 padding 保持一致
-  }
-
-  .el-dialog__title {
-    font-size: 16px !important; // 减小 header 字体大小（从 20px 改为 16px）
-    font-weight: 600;
-  }
-
-  .el-dialog__body {
-    overflow: hidden;
-    position: relative;
-    flex: 1;
-    min-height: 0;
-    padding: 0; // body 不需要 padding，由外层弹窗统一管理
-    display: flex;
-    flex-direction: column;
-  }
-
-  .settings-container {
-    width: 100%;
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 8px 0; // 只设置上下 padding
-    min-height: 0;
-  }
-
-  .el-dialog__footer {
-    flex-shrink: 0;
-    padding: 12px 0 0 0; // 只设置顶部间距
-  }
-
-  .dialog-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    width: 100%;
-
+    // 通用 footer 按钮样式
     .el-button {
       min-width: 72px;
       height: 32px;
@@ -648,6 +560,25 @@ body {
       }
     }
   }
+}
+
+// Bounce 动画 - 参考 Element Plus 官方示例
+.dialog-bounce-enter-active,
+.dialog-bounce-leave-active,
+.dialog-bounce-enter-active .el-dialog,
+.dialog-bounce-leave-active .el-dialog {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dialog-bounce-enter-from,
+.dialog-bounce-leave-to {
+  opacity: 0;
+}
+
+.dialog-bounce-enter-from .el-dialog,
+.dialog-bounce-leave-to .el-dialog {
+  transform: scale(0.3) translateY(-50px);
+  opacity: 0;
 }
 
 .el-notification {
@@ -697,23 +628,31 @@ body {
   border: 1px solid var(--el-border-color);
   border-radius: $radius-md !important;
   backdrop-filter: blur(10px);
+  min-width: 480px !important;
 
   .el-message-box__header {
-    padding: 20px 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
   }
 
   .el-message-box__title {
     color: var(--el-text-color-primary);
     font-weight: 600;
+    flex: 1;
+    line-height: 1.5;
+    padding-right: 40px; // 为关闭按钮留出空间
   }
 
   .el-message-box__content {
     padding: 10px 20px;
     color: var(--el-text-color-regular);
+    white-space: nowrap;
+    word-break: keep-all;
   }
 
   .el-message-box__btns {
-    padding: 10px 20px 20px;
     display: flex;
     justify-content: flex-end;
     gap: 8px;

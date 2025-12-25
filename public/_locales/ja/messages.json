@@ -179,17 +179,8 @@
   "downloadFileType": {
     "message": "ファイルタイプ"
   },
-  "downloadError": {
-    "message": "エラー"
-  },
-  "downloadCanResume": {
-    "message": "再開可能"
-  },
   "downloadId": {
     "message": "ダウンロードID"
-  },
-  "downloadReceivedBytes": {
-    "message": "受信バイト数"
   },
   "downloadDuration": {
     "message": "ダウンロード時間"
@@ -214,6 +205,15 @@
   },
   "downloadDangerUserConfirmed": {
     "message": "ユーザー確認済み"
+  },
+  "downloadError": {
+    "message": "エラー情報"
+  },
+  "downloadCanResume": {
+    "message": "再開可能"
+  },
+  "downloadReceivedBytes": {
+    "message": "受信済み"
   },
   "downloadFrom": {
     "message": "出典"

@@ -3,10 +3,10 @@
   --primary-color: #f97316;
   --primary-hover: #ea580c;
   --primary-active: #c2410c;
-  --bg-primary: #fff7ed;
-  --bg-secondary: #ffffff;
+  --bg-primary: #fff4e6;
+  --bg-secondary: #fff8f0;
   --bg-tertiary: #ffedd5;
-  --bg-glass: rgba(255, 255, 255, 0.98);
+  --bg-glass: rgba(255, 248, 240, 0.95);
   --text-primary: #7c2d12;
   --text-secondary: #9a3412;
   --text-disabled: #fdba74;
@@ -16,7 +16,7 @@
   --shadow-md: 0 4px 6px rgba(249, 115, 22, 0.1);
   --shadow-lg: 0 10px 15px rgba(249, 115, 22, 0.12);
   --gradient-primary: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  --gradient-bg: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+  --gradient-bg: linear-gradient(135deg, #fff4e6 0%, #fff8f0 100%);
 
   // Element Plus 主题变量 - 完整版
   --el-color-primary: #f97316;
@@ -96,9 +96,9 @@
   --el-text-color-secondary: #c2410c;
   --el-text-color-placeholder: #fdba74;
   --el-text-color-disabled: #fed7aa;
-  --el-bg-color: #ffffff;
-  --el-bg-color-page: #fff7ed;
-  --el-bg-color-overlay: rgba(255, 255, 255, 0.98);
+  --el-bg-color: #fff8f0;
+  --el-bg-color-page: #fff4e6;
+  --el-bg-color-overlay: rgba(255, 248, 240, 0.95);
   --el-border-color: rgba(249, 115, 22, 0.22);
   --el-border-color-light: rgba(249, 115, 22, 0.18);
   --el-border-color-lighter: rgba(249, 115, 22, 0.12);
@@ -111,8 +111,8 @@
   --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
   --el-fill-color: #ffedd5;
   --el-fill-color-light: #fff7ed;
-  --el-fill-color-lighter: #fffaf5;
-  --el-fill-color-extra-light: #ffffff;
+  --el-fill-color-lighter: #fff4e6;
+  --el-fill-color-extra-light: #fff8f0;
   --el-fill-color-dark: #fed7aa;
   --el-fill-color-darker: #fdba74;
   --el-fill-color-blank: transparent;
@@ -126,8 +126,8 @@
   --el-overlay-color: rgba(0, 0, 0, 0.8);
   --el-overlay-color-light: rgba(0, 0, 0, 0.7);
   --el-overlay-color-lighter: rgba(0, 0, 0, 0.5);
-  --el-mask-color: rgba(255, 255, 255, 0.9);
-  --el-mask-color-extra-light: rgba(255, 255, 255, 0.3);
+  --el-mask-color: rgba(255, 248, 240, 0.9);
+  --el-mask-color-extra-light: rgba(255, 248, 240, 0.3);
   --el-svg-monochrome-grey: var(--el-border-color);
 }
 

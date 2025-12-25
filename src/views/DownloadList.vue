@@ -315,20 +315,22 @@ const handleLoadMore = () => {
       min-width: 220px;
 
       // 搜索框样式
+      // 使用 box-shadow inset 代替 border，避免影响盒子高度
       :deep(.el-input__wrapper) {
         min-height: 32px;
         height: 32px;
         padding: 0 12px;
         background: var(--el-fill-color-light);
-        border: 1px solid var(--el-border-color-lighter);
+        border: none;
+        box-shadow: 0 0 0 1px var(--el-border-color-lighter) inset;
         transition: all 0.2s ease;
 
         &:hover {
-          border-color: var(--el-border-color);
+          box-shadow: 0 0 0 1px var(--el-border-color) inset;
         }
 
         &.is-focus {
-          border-color: var(--el-color-primary);
+          box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 2px var(--el-color-primary-light-9);
         }
       }
 
@@ -340,21 +342,33 @@ const handleLoadMore = () => {
     .settings-controls {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
 
-      // 图标按钮样式
+      // 图标按钮样式 - 无边框现代设计
       :deep(.el-button) {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         padding: 0;
-        background: var(--el-fill-color-light);
-        border: 1px solid var(--el-border-color-lighter);
-        transition: all 0.2s ease;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        color: var(--el-text-color-regular);
 
         &:hover {
-          background: var(--el-fill-color);
-          border-color: var(--el-border-color);
-          transform: translateY(-1px);
+          background: var(--el-fill-color-light);
+          color: var(--el-color-primary);
+          transform: scale(1.05);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+
+        // 字体图标样式
+        .iconfont {
+          font-size: 16px;
+          line-height: 1;
         }
       }
 
@@ -459,17 +473,17 @@ const handleLoadMore = () => {
     width: 28px;
     height: 28px;
     padding: 0 !important;
-    margin-left: 6px;
-    background: var(--el-bg-color-page);
-    border: 1px solid var(--el-border-color);
+    margin-left: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
     color: var(--el-text-color-regular);
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: $radius-sm;
     min-width: 28px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 
     // 移除 Element Plus 默认的 padding 和间距
     :deep(.el-button__inner) {
@@ -493,19 +507,16 @@ const handleLoadMore = () => {
 
     &:hover {
       background: var(--el-fill-color-light);
-      border-color: var(--el-color-primary-light-7);
       color: var(--el-color-primary);
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      transform: scale(1.05);
     }
 
     &:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transform: scale(0.95);
     }
 
     .sort-icon {
-      font-size: 14px;
+      font-size: 16px;
       transition: transform 0.2s ease;
       color: inherit;
       display: flex;

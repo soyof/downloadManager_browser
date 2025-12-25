@@ -9,7 +9,7 @@
         v-if="downloadItem.status === 'downloading'"
         :content="$t('downloadPauseDownload')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           size="small"
@@ -24,7 +24,7 @@
         v-if="downloadItem.status === 'paused' && downloadItem.canResume === true"
         :content="$t('downloadResumeDownload')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           size="small"
@@ -39,7 +39,7 @@
         v-if="downloadItem.status === 'paused' && downloadItem.canResume !== true"
         :content="$t('downloadRedownload')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           size="small"
@@ -57,7 +57,7 @@
         v-if="downloadItem.status === 'failed'"
         :content="$t('downloadRetryDownload')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           size="small"
@@ -75,7 +75,7 @@
         v-if="downloadItem.status === 'cancelled'"
         :content="$t('downloadRedownload')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           size="small"
@@ -93,8 +93,8 @@
         v-if="downloadItem.url"
         :content="downloadItem.url"
         placement="top"
-        :popper-style="{ maxWidth: '400px', wordBreak: 'break-all' }"
-        :show-after="300"
+        :popperStyle="{ maxWidth: '400px', wordBreak: 'break-all' }"
+        :showAfter="300"
       >
         <el-button
           size="small"
@@ -104,12 +104,36 @@
         />
       </el-tooltip>
 
+      <!-- 文件详情：所有状态都显示 -->
+      <el-tooltip
+        :content="$t('downloadFileDetails')"
+        placement="top"
+        :showAfter="600"
+      >
+        <el-button
+          size="small"
+          circle
+          :icon="View"
+          @click="$emit('showDetails')"
+        />
+      </el-tooltip>
+
       <el-tooltip
         :content="$t('commonDelete')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
+        <!-- 只有一个选项时，直接点击删除 -->
+        <el-button
+          v-if="(downloadItem.status !== 'downloading' && downloadItem.status !== 'paused')"
+          size="small"
+          circle
+          :icon="Delete"
+          @click="$emit('command', 'deleteRecord')"
+        />
+        <!-- 多个选项时，显示下拉菜单 -->
         <el-dropdown
+          v-else
           trigger="click"
           @command="$emit('command', $event)"
         >
@@ -121,10 +145,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <!-- 取消下载：只在下载中或暂停状态时显示 -->
-              <el-dropdown-item
-                v-if="downloadItem.status === 'downloading' || downloadItem.status === 'paused'"
-                command="cancel"
-              >
+              <el-dropdown-item command="cancel">
                 {{ $t('downloadCancelDownload') }}
               </el-dropdown-item>
               <el-dropdown-item command="deleteRecord">
@@ -146,7 +167,7 @@
         <el-tooltip
           :content="$t('downloadRedownload')"
           placement="top"
-          :show-after="600"
+          :showAfter="600"
         >
           <el-button
             size="small"
@@ -165,7 +186,7 @@
         <el-tooltip
           :content="$t('downloadOpenFolder')"
           placement="top"
-          :show-after="600"
+          :showAfter="600"
         >
           <el-button
             size="small"
@@ -178,7 +199,7 @@
         <el-tooltip
           :content="$t('downloadOpenFile')"
           placement="top"
-          :show-after="600"
+          :showAfter="600"
         >
           <el-button
             size="small"
@@ -194,8 +215,8 @@
         v-if="downloadItem.url"
         :content="downloadItem.url"
         placement="top"
-        :popper-style="{ maxWidth: '400px', wordBreak: 'break-all' }"
-        :show-after="300"
+        :popperStyle="{ maxWidth: '400px', wordBreak: 'break-all' }"
+        :showAfter="300"
       >
         <el-button
           size="small"
@@ -205,12 +226,11 @@
         />
       </el-tooltip>
 
-      <!-- 文件详情：只在文件存在时显示 -->
+      <!-- 文件详情：所有状态都显示 -->
       <el-tooltip
-        v-if="!isFileDeleted"
         :content="$t('downloadFileDetails')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
         <el-button
           size="small"
@@ -223,9 +243,19 @@
       <el-tooltip
         :content="$t('commonDelete')"
         placement="top"
-        :show-after="600"
+        :showAfter="600"
       >
+        <!-- 只有一个选项时（文件已删除），直接点击删除 -->
+        <el-button
+          v-if="isFileDeleted"
+          size="small"
+          circle
+          :icon="Delete"
+          @click="$emit('command', 'deleteRecord')"
+        />
+        <!-- 多个选项时（文件存在），显示下拉菜单 -->
         <el-dropdown
+          v-else
           trigger="click"
           @command="$emit('command', $event)"
         >
@@ -239,10 +269,7 @@
               <el-dropdown-item command="deleteRecord">
                 {{ $t('downloadDeleteRecord') }}
               </el-dropdown-item>
-              <el-dropdown-item
-                v-if="!isFileDeleted"
-                command="deleteFileAndRecord"
-              >
+              <el-dropdown-item command="deleteFileAndRecord">
                 {{ $t('downloadDeleteFileAndRecord') }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -297,14 +324,60 @@ const isFileDeleted = computed(() => {
 .item-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   flex-shrink: 0;
+
+  // 图标按钮样式 - 无边框现代设计
+  :deep(.el-button) {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--el-text-color-regular);
+
+    &:hover {
+      background: var(--el-fill-color-light);
+      color: var(--el-color-primary);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // 主要按钮（type="primary"）保持主题色，但无边框
+    &.el-button--primary {
+      background: transparent;
+      color: var(--el-color-primary);
+
+      &:hover {
+        background: var(--el-color-primary-light-9);
+        color: var(--el-color-primary);
+      }
+
+      &:active {
+        background: var(--el-color-primary-light-8);
+      }
+    }
+
+    // loading 状态保持原样
+    &.is-loading {
+      pointer-events: none;
+    }
+  }
+
+  :deep(.el-icon) {
+    font-size: 16px;
+  }
 }
 
 .actions-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 </style>
 

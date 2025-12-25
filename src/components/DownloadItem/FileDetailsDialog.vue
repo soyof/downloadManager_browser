@@ -1,22 +1,24 @@
 <template>
   <el-dialog
-    :model-value="visible"
+    :modelValue="visible"
     :title="$t('downloadFileDetails')"
     width="700px"
-    :close-on-click-modal="false"
-    append-to-body
+    :closeOnClickModal="false"
+    appendToBody
     class="file-details-dialog"
     transition="dialog-bounce"
-    @update:model-value="$emit('update:visible', $event)"
+    @update:modelValue="$emit('update:visible', $event)"
   >
     <div class="file-details-content">
       <el-descriptions
         :column="1"
         border
-        :label-style="{ width: '120px' }"
+        :labelStyle="{ width: '120px' }"
       >
-        <el-descriptions-item :label="$t('downloadId')">
-          {{ downloadItem.id }}
+        <el-descriptions-item :label="$t('downloadStatus')">
+          <el-tag :type="getStatusTagType(downloadItem.status)">
+            {{ getStatusText(downloadItem.status) }}
+          </el-tag>
         </el-descriptions-item>
         <el-descriptions-item :label="$t('downloadFileName')">
           {{ downloadItem.name }}
@@ -25,13 +27,13 @@
           v-if="downloadItem.url"
           :label="$t('downloadUrl')"
         >
-          <el-link
+          <a
             :href="downloadItem.url"
             target="_blank"
-            type="primary"
+            rel="noopener noreferrer"
           >
             {{ downloadItem.url }}
-          </el-link>
+          </a>
         </el-descriptions-item>
         <el-descriptions-item
           v-if="downloadItem.path"
@@ -41,6 +43,24 @@
         </el-descriptions-item>
         <el-descriptions-item :label="$t('downloadFileSize')">
           {{ formatFileSize(downloadItem.size) }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          v-if="downloadItem.status === 'downloading' || downloadItem.status === 'paused'"
+          :label="$t('downloadProgress')"
+        >
+          {{ downloadItem.progress }}%
+          <span
+            v-if="downloadItem.size > 0"
+            class="progress-detail"
+          >
+            ({{ formatFileSize(downloadItem.receivedBytes) }} / {{ formatFileSize(downloadItem.size) }})
+          </span>
+        </el-descriptions-item>
+        <el-descriptions-item
+          v-if="downloadItem.status === 'downloading'"
+          :label="$t('downloadSpeed')"
+        >
+          {{ formatSpeed(downloadItem.speed) }}
         </el-descriptions-item>
         <el-descriptions-item :label="$t('downloadStartTime')">
           {{ formatTimeWithSeconds(downloadItem.startTime) }}
@@ -70,13 +90,13 @@
           v-if="downloadItem.referrer"
           :label="$t('downloadReferrer')"
         >
-          <el-link
+          <a
             :href="downloadItem.referrer"
             target="_blank"
-            type="primary"
+            rel="noopener noreferrer"
           >
             {{ downloadItem.referrer }}
-          </el-link>
+          </a>
         </el-descriptions-item>
         <el-descriptions-item
           v-if="downloadItem.incognito !== undefined"
@@ -92,6 +112,26 @@
             {{ getDangerText(downloadItem.danger) }}
           </el-tag>
         </el-descriptions-item>
+        <el-descriptions-item
+          v-if="downloadItem.exists !== undefined"
+          :label="$t('downloadFileExists')"
+        >
+          {{ downloadItem.exists ? $t('commonYes') : $t('commonNo') }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          v-if="downloadItem.canResume !== undefined && (downloadItem.status === 'paused' || downloadItem.status === 'failed')"
+          :label="$t('downloadCanResume')"
+        >
+          {{ downloadItem.canResume ? $t('commonYes') : $t('commonNo') }}
+        </el-descriptions-item>
+        <el-descriptions-item
+          v-if="downloadItem.error"
+          :label="$t('downloadError')"
+        >
+          <el-tag type="danger">
+            {{ getErrorText(downloadItem.error) }}
+          </el-tag>
+        </el-descriptions-item>
       </el-descriptions>
     </div>
     <template #footer>
@@ -103,9 +143,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import type { DownloadItem } from '@/types/download'
+import { DownloadStatus } from '@/types/download'
 import { formatFileSize, formatTimeWithSeconds, formatDuration } from '@/utils/download'
 
 const props = defineProps<{
@@ -140,7 +180,7 @@ const getFileTypeText = (fileType: string): string => {
   }
   const typeText = typeMap[fileType] || fileType
   const extension = getFileExtension(props.downloadItem.name)
-  
+
   if (extension) {
     return `${typeText}（${extension}）`
   }
@@ -166,37 +206,111 @@ const getDangerTagType = (danger: string): string => {
   }
   return typeMap[danger] || 'info'
 }
+
+// 获取状态文本
+const getStatusText = (status: DownloadStatus): string => {
+  const statusMap: Record<DownloadStatus, string> = {
+    [DownloadStatus.DOWNLOADING]: $t('downloadDownloading'),
+    [DownloadStatus.COMPLETED]: $t('downloadCompleted'),
+    [DownloadStatus.PAUSED]: $t('downloadPaused'),
+    [DownloadStatus.FAILED]: $t('downloadFailed'),
+    [DownloadStatus.CANCELLED]: $t('downloadCancelled'),
+    [DownloadStatus.DELETED]: $t('downloadFileDeleted')
+  }
+  return statusMap[status] || status
+}
+
+// 获取状态标签类型
+const getStatusTagType = (status: DownloadStatus): string => {
+  const typeMap: Record<DownloadStatus, string> = {
+    [DownloadStatus.DOWNLOADING]: 'primary',
+    [DownloadStatus.COMPLETED]: 'success',
+    [DownloadStatus.PAUSED]: 'warning',
+    [DownloadStatus.FAILED]: 'danger',
+    [DownloadStatus.CANCELLED]: 'info',
+    [DownloadStatus.DELETED]: 'info'
+  }
+  return typeMap[status] || 'info'
+}
+
+// 格式化下载速度
+const formatSpeed = (bytesPerSecond: number): string => {
+  return `${formatFileSize(bytesPerSecond)}/s`
+}
+
+// 获取错误信息文本（将错误代码转换为用户友好的文本）
+const getErrorText = (errorCode: string): string => {
+  if (!errorCode) {
+    return ''
+  }
+
+  // Chrome downloads API 的错误代码通常是 "USER_CANCELED" 这样的格式
+  // 将其转换为驼峰命名格式的翻译键 "errorUserCanceled"
+  const errorCodeUpper = errorCode.toUpperCase()
+  // 将 "USER_CANCELED" 转换为 "userCanceled"
+  const camelCaseCode = errorCodeUpper
+    .split('_')
+    .map((word, index) => {
+      if (index === 0) {
+        return word.toLowerCase()
+      }
+      return word.charAt(0) + word.slice(1).toLowerCase()
+    })
+    .join('')
+  const translationKey = `error${camelCaseCode.charAt(0).toUpperCase() + camelCaseCode.slice(1)}`
+
+  // 尝试获取翻译
+  const translated = $t(translationKey)
+
+  // 如果翻译键存在且不等于原始 key，说明找到了翻译
+  if (translated && translated !== translationKey) {
+    return translated
+  }
+
+  // 如果没有找到翻译，返回原始错误信息（可能是自定义错误）
+  return errorCode
+}
 </script>
 
 <style lang="scss" scoped>
 .file-details-content {
-  :deep(.el-descriptions__label) {
-    font-weight: 500;
-  }
-}
-</style>
+  :deep(.el-descriptions) {
+    .el-descriptions__label {
+      font-weight: 500;
+      width: 80px !important;
+      min-width: 80px !important;
+      flex-shrink: 0 !important;
+      white-space: nowrap;
+    }
 
-<!-- 非 scoped 样式：因为 el-dialog 被 append-to-body，scoped 样式无法生效 -->
-<style lang="scss">
-.el-dialog.file-details-dialog {
-  .el-dialog__header {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+    .el-descriptions__content {
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: normal;
 
-  .el-dialog__headerbtn {
-    top: 12px !important;
-  }
+      // 链接样式：使用原生 a 标签，允许换行，支持多行下划线
+      a {
+        color: var(--el-color-primary);
+        display: inline;
+        word-break: break-all;
+        word-wrap: break-word;
+        white-space: normal; // 允许换行
+        text-decoration: none; // 默认无下划线
 
-  .el-dialog__body {
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-    padding: 20px !important;
-  }
+        // hover 时显示下划线（浏览器原生支持多行）
+        &:hover {
+          color: var(--el-color-primary-light-3);
+          text-decoration: underline;
+        }
+      }
 
-  .el-dialog__footer {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+      // 进度详情样式
+      .progress-detail {
+        color: var(--el-text-color-secondary);
+        font-size: 12px;
+        margin-left: 8px;
+      }
+    }
   }
 }
 </style>

@@ -179,17 +179,8 @@
   "downloadFileType": {
     "message": "File Type"
   },
-  "downloadError": {
-    "message": "Error"
-  },
-  "downloadCanResume": {
-    "message": "Can Resume"
-  },
   "downloadId": {
     "message": "Download ID"
-  },
-  "downloadReceivedBytes": {
-    "message": "Received Bytes"
   },
   "downloadDuration": {
     "message": "Duration"
@@ -214,6 +205,15 @@
   },
   "downloadDangerUserConfirmed": {
     "message": "User Confirmed"
+  },
+  "downloadError": {
+    "message": "Error"
+  },
+  "downloadCanResume": {
+    "message": "Can Resume"
+  },
+  "downloadReceivedBytes": {
+    "message": "Received"
   },
   "downloadFrom": {
     "message": "From"

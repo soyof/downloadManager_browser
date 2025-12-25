@@ -2,7 +2,7 @@
   <el-dialog
     v-model="dialogVisible"
     :title="$t('settingsTitle')"
-    width="600px"
+    width="700px"
     class="settings-dialog"
     transition="dialog-bounce"
   >
@@ -247,29 +247,6 @@ const handleReset = () => {
 </script>
 
 <style lang="scss" scoped>
-/* 设置容器滚动条样式（scoped，仅在此组件生效） */
-/* 注意：.settings-container 的基础样式在 main.scss 的 .settings-dialog 下定义 */
-.settings-container {
-  /* 自定义滚动条样式 */
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--el-border-color);
-    border-radius: 3px;
-
-    &:hover {
-      background: var(--el-text-color-placeholder);
-    }
-  }
-}
-
-/* 注意：.dialog-footer 样式在 main.scss 的 .settings-dialog 下定义，这里不需要重复定义 */
 
 .settings-section {
   margin-bottom: 20px;

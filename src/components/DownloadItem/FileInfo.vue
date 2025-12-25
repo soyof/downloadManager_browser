@@ -4,36 +4,36 @@
       {{ fileIcon }}
     </div>
     <div class="file-info">
-      <el-tooltip
-        :content="downloadItem.name"
-        placement="top"
-        :popper-style="{ maxWidth: '400px', wordBreak: 'break-all' }"
-        :show-after="600"
-      >
-        <div class="file-name">
+      <div class="file-name">
+        <el-tooltip
+          :content="downloadItem.name"
+          placement="top"
+          :popperStyle="{ maxWidth: '400px', wordBreak: 'break-all' }"
+          :showAfter="600"
+        >
           <span class="file-name-text">{{ downloadItem.name }}</span>
-          <!-- 文件已删除标识 -->
-          <el-tooltip
-            v-if="isFileDeleted"
-            :content="fileDeletedMessage"
-            placement="top"
-            :popper-style="{ maxWidth: '300px' }"
-            :show-after="600"
-          >
-            <span class="deleted-indicator">🗑️</span>
-          </el-tooltip>
-          <!-- 错误指示器（仅在hover时显示详情） -->
-          <el-tooltip
-            v-if="downloadItem.error"
-            :content="errorMessage"
-            placement="top"
-            :popper-style="{ maxWidth: '300px' }"
-            :show-after="600"
-          >
-            <span class="error-indicator">⚠️</span>
-          </el-tooltip>
-        </div>
-      </el-tooltip>
+        </el-tooltip>
+        <!-- 文件已删除标识 -->
+        <el-tooltip
+          v-if="isFileDeleted"
+          :content="fileDeletedMessage"
+          placement="top"
+          :popperStyle="{ maxWidth: '300px' }"
+          :showAfter="600"
+        >
+          <span class="deleted-indicator">🗑️</span>
+        </el-tooltip>
+        <!-- 错误指示器（仅在hover时显示详情） -->
+        <el-tooltip
+          v-if="downloadItem.error"
+          :content="errorMessage"
+          placement="top"
+          :popperStyle="{ maxWidth: '300px' }"
+          :showAfter="600"
+        >
+          <span class="error-indicator">⚠️</span>
+        </el-tooltip>
+      </div>
       <!-- 下载中的详细信息 -->
       <div
         v-if="downloadItem.status === 'downloading'"
@@ -55,8 +55,8 @@
           v-if="downloadItem.path"
           :content="downloadItem.path"
           placement="top"
-          :popper-style="{ maxWidth: '400px', wordBreak: 'break-all' }"
-          :show-after="600"
+          :popperStyle="{ maxWidth: '400px', wordBreak: 'break-all' }"
+          :showAfter="600"
         >
           <span class="file-path-inline">
             · 📁 {{ directoryPath }}
@@ -125,6 +125,7 @@ const fileDeletedMessage = computed(() => t('downloadFileDeleted'))
  */
 const extractDomain = (url: string): string | null => {
   try {
+    // eslint-disable-next-line no-undef
     const urlObj = new URL(url)
     return urlObj.hostname
   } catch {
@@ -146,6 +147,7 @@ const extractDomain = (url: string): string | null => {
  */
 const extractBaseUrl = (url: string): string | null => {
   try {
+    // eslint-disable-next-line no-undef
     const urlObj = new URL(url)
     // 返回 origin（协议 + 域名 + 端口），这样点击会跳转到网站首页
     return urlObj.origin
@@ -265,7 +267,7 @@ const websiteUrl = computed(() => {
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 0; // 允许文本元素收缩
-    flex: 1; // 占据剩余空间
+    max-width: calc(100% - 40px); // 限制最大宽度，为状态标签和图标预留空间
   }
 
   .error-indicator,
@@ -305,6 +307,12 @@ const websiteUrl = computed(() => {
   span {
     white-space: nowrap;
     flex-shrink: 0; // 防止文本收缩
+
+    // 文件路径允许收缩，设置最大宽度
+    &.file-path-inline {
+      flex-shrink: 1; // 允许收缩
+      min-width: 0; // 允许收缩到 0
+    }
   }
 }
 
@@ -312,6 +320,8 @@ const websiteUrl = computed(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  min-width: 0; // 允许收缩
+  // 不设置固定 max-width，让它根据父容器自动适应到状态标签位置
 }
 </style>
 

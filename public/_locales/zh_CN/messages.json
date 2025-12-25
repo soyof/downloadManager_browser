@@ -179,17 +179,8 @@
   "downloadFileType": {
     "message": "文件类型"
   },
-  "downloadError": {
-    "message": "错误信息"
-  },
-  "downloadCanResume": {
-    "message": "可恢复"
-  },
   "downloadId": {
     "message": "下载ID"
-  },
-  "downloadReceivedBytes": {
-    "message": "已接收字节数"
   },
   "downloadDuration": {
     "message": "下载耗时"
@@ -214,6 +205,15 @@
   },
   "downloadDangerUserConfirmed": {
     "message": "用户确认"
+  },
+  "downloadError": {
+    "message": "错误信息"
+  },
+  "downloadCanResume": {
+    "message": "可恢复下载"
+  },
+  "downloadReceivedBytes": {
+    "message": "已接收"
   },
   "downloadFrom": {
     "message": "来自"

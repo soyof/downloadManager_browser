@@ -32,7 +32,7 @@
         <el-tooltip
           :content="$t('settingsTheme')"
           placement="bottom"
-          :show-after="600"
+          :showAfter="600"
         >
           <el-dropdown
             trigger="click"
@@ -61,16 +61,17 @@
         <el-tooltip
           :content="$t('settingsLanguage')"
           placement="bottom"
-          :show-after="600"
+          :showAfter="600"
         >
           <el-dropdown
             trigger="click"
             @command="$emit('localeChange', $event)"
           >
             <el-button
-              :icon="ChatLineRound"
               circle
-            />
+            >
+              <i class="iconfont icon-language_change"></i>
+            </el-button>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item
@@ -106,7 +107,7 @@
         <el-tooltip
           :content="$t('commonSettings')"
           placement="bottom"
-          :show-after="600"
+          :showAfter="600"
         >
           <el-button
             :icon="Setting"
@@ -122,7 +123,7 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Search, Setting, Brush, ChatLineRound } from '@element-plus/icons-vue'
+import { Search, Setting, Brush } from '@element-plus/icons-vue'
 import { getThemeList } from '@/utils/theme'
 import type { ThemeName } from '@/utils/theme'
 import type { Locale } from '@/i18n/types'
@@ -249,8 +250,40 @@ watch(() => props.searchText, (newVal) => {
     .settings-controls {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
       flex-shrink: 0;
+
+      // 图标按钮样式 - 无边框现代设计
+      :deep(.el-button) {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        color: var(--el-text-color-regular);
+
+        &:hover {
+          background: var(--el-fill-color-light);
+          color: var(--el-color-primary);
+          transform: scale(1.05);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+
+        // 字体图标样式
+        .iconfont {
+          font-size: 16px;
+          line-height: 1;
+        }
+      }
+
+      :deep(.el-icon) {
+        font-size: 16px;
+      }
     }
   }
 }

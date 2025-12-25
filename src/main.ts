@@ -10,6 +10,8 @@ import { createApp } from 'vue'
 // @ts-ignore
 import { initI18n } from '@/i18n'
 import { initTheme } from '@/utils/theme'
+import '@/assets/iconfonts/iconfont.css'
+// @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import App from './App.vue'
 import './styles/main.scss'
