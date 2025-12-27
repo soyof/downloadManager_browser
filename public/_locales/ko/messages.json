@@ -1,0 +1,593 @@
+{
+  "extName": {
+    "message": "다운로드 관리자"
+  },
+  "extDescription": {
+    "message": "강력한 다운로드 관리자로 일시정지/재개, 필터링, 정렬, 검색, 다중 테마 및 언어 지원을 제공합니다"
+  },
+  "commonConfirm": {
+    "message": "확인"
+  },
+  "commonCancel": {
+    "message": "취소"
+  },
+  "commonDelete": {
+    "message": "삭제"
+  },
+  "commonEdit": {
+    "message": "편집"
+  },
+  "commonSave": {
+    "message": "저장"
+  },
+  "commonSearch": {
+    "message": "검색"
+  },
+  "commonFilter": {
+    "message": "필터"
+  },
+  "commonSort": {
+    "message": "정렬"
+  },
+  "commonRefresh": {
+    "message": "새로고침"
+  },
+  "commonSettings": {
+    "message": "설정"
+  },
+  "commonClose": {
+    "message": "닫기"
+  },
+  "commonOpen": {
+    "message": "열기"
+  },
+  "commonRetry": {
+    "message": "재시도"
+  },
+  "commonPause": {
+    "message": "일시정지"
+  },
+  "commonResume": {
+    "message": "재개"
+  },
+  "commonCancelDownload": {
+    "message": "다운로드 취소"
+  },
+  "commonSelect": {
+    "message": "선택"
+  },
+  "commonReset": {
+    "message": "초기화"
+  },
+  "commonLoading": {
+    "message": "로딩 중..."
+  },
+  "commonYes": {
+    "message": "예"
+  },
+  "commonNo": {
+    "message": "아니오"
+  },
+  "downloadTitle": {
+    "message": "다운로드"
+  },
+  "downloadEmpty": {
+    "message": "다운로드 기록이 없습니다"
+  },
+  "downloadEmptyDesc": {
+    "message": "파일 다운로드를 시작하면 기록이 여기에 표시됩니다"
+  },
+  "downloadDownloading": {
+    "message": "다운로드 중"
+  },
+  "downloadCompleted": {
+    "message": "완료됨"
+  },
+  "downloadFileDeleted": {
+    "message": "파일이 삭제됨"
+  },
+  "downloadDeleted": {
+    "message": "삭제됨"
+  },
+  "downloadPaused": {
+    "message": "일시정지됨"
+  },
+  "downloadFailed": {
+    "message": "다운로드 실패"
+  },
+  "downloadCancelled": {
+    "message": "취소됨"
+  },
+  "downloadAll": {
+    "message": "전체"
+  },
+  "downloadName": {
+    "message": "파일명"
+  },
+  "downloadSize": {
+    "message": "크기"
+  },
+  "downloadProgress": {
+    "message": "진행률"
+  },
+  "downloadStatus": {
+    "message": "상태"
+  },
+  "downloadSpeed": {
+    "message": "속도"
+  },
+  "downloadTime": {
+    "message": "시간"
+  },
+  "downloadPath": {
+    "message": "저장 경로"
+  },
+  "downloadOpenFile": {
+    "message": "파일 열기"
+  },
+  "downloadOpenFolder": {
+    "message": "폴더 열기"
+  },
+  "downloadDeleteRecord": {
+    "message": "기록 삭제"
+  },
+  "downloadDeleteFileAndRecord": {
+    "message": "파일 및 기록 삭제"
+  },
+  "downloadRetryDownload": {
+    "message": "다운로드 재시도"
+  },
+  "downloadRedownload": {
+    "message": "다시 다운로드"
+  },
+  "downloadPauseDownload": {
+    "message": "다운로드 일시정지"
+  },
+  "downloadResumeDownload": {
+    "message": "다운로드 재개"
+  },
+  "downloadCancelDownload": {
+    "message": "다운로드 취소"
+  },
+  "downloadCopyUrl": {
+    "message": "다운로드 URL 복사"
+  },
+  "downloadUrl": {
+    "message": "다운로드 URL"
+  },
+  "downloadFileDetails": {
+    "message": "파일 세부정보"
+  },
+  "downloadFileName": {
+    "message": "파일명"
+  },
+  "downloadFilePath": {
+    "message": "파일 경로"
+  },
+  "downloadFileSize": {
+    "message": "파일 크기"
+  },
+  "downloadStartTime": {
+    "message": "시작 시간"
+  },
+  "downloadEndTime": {
+    "message": "종료 시간"
+  },
+  "downloadMimeType": {
+    "message": "MIME 유형"
+  },
+  "downloadFileType": {
+    "message": "파일 유형"
+  },
+  "downloadId": {
+    "message": "다운로드 ID"
+  },
+  "downloadDuration": {
+    "message": "다운로드 시간"
+  },
+  "downloadRemainingTime": {
+    "message": "남은 시간"
+  },
+  "downloadReferrer": {
+    "message": "참조 출처"
+  },
+  "downloadIncognito": {
+    "message": "시크릿 모드"
+  },
+  "downloadDanger": {
+    "message": "보안 등급"
+  },
+  "downloadDangerSafe": {
+    "message": "안전"
+  },
+  "downloadDangerUnsafe": {
+    "message": "위험"
+  },
+  "downloadDangerUserConfirmed": {
+    "message": "사용자 확인됨"
+  },
+  "downloadError": {
+    "message": "오류 정보"
+  },
+  "downloadCanResume": {
+    "message": "다운로드 재개 가능"
+  },
+  "downloadReceivedBytes": {
+    "message": "받은 데이터"
+  },
+  "downloadFrom": {
+    "message": "출처"
+  },
+  "downloadSearchPlaceholder": {
+    "message": "파일명 검색..."
+  },
+  "downloadFilterByStatus": {
+    "message": "상태별 필터"
+  },
+  "downloadFilterByType": {
+    "message": "유형별 필터"
+  },
+  "downloadFileTypeImage": {
+    "message": "이미지"
+  },
+  "downloadFileTypeVideo": {
+    "message": "비디오"
+  },
+  "downloadFileTypeDocument": {
+    "message": "문서"
+  },
+  "downloadFileTypeAudio": {
+    "message": "오디오"
+  },
+  "downloadFileTypeOther": {
+    "message": "기타"
+  },
+  "downloadFilterByTime": {
+    "message": "시간별 필터"
+  },
+  "downloadTimeRangeToday": {
+    "message": "오늘"
+  },
+  "downloadTimeRangeYesterday": {
+    "message": "어제"
+  },
+  "downloadTimeRangeThisWeek": {
+    "message": "이번 주"
+  },
+  "downloadTimeRangeThisMonth": {
+    "message": "이번 달"
+  },
+  "downloadTimeRangeThisYear": {
+    "message": "올해"
+  },
+  "downloadTimeRangeOlder": {
+    "message": "이전"
+  },
+  "downloadFilterBySize": {
+    "message": "크기별 필터"
+  },
+  "downloadSizeRangeSmall": {
+    "message": "작은 파일 (<10MB)"
+  },
+  "downloadSizeRangeMedium": {
+    "message": "중간 크기 (10-100MB)"
+  },
+  "downloadSizeRangeLarge": {
+    "message": "큰 파일 (100MB-1GB)"
+  },
+  "downloadSizeRangeVeryLarge": {
+    "message": "매우 큰 파일 (>1GB)"
+  },
+  "downloadFilterByExists": {
+    "message": "존재 상태별"
+  },
+  "downloadFileExists": {
+    "message": "파일 존재"
+  },
+  "downloadSortBy": {
+    "message": "정렬 방식"
+  },
+  "downloadSortByTime": {
+    "message": "시간순"
+  },
+  "downloadSortBySize": {
+    "message": "크기순"
+  },
+  "downloadSortByName": {
+    "message": "이름순"
+  },
+  "downloadSortOrderAsc": {
+    "message": "오름차순"
+  },
+  "downloadSortOrderDesc": {
+    "message": "내림차순"
+  },
+  "settingsTitle": {
+    "message": "다운로드 설정"
+  },
+  "settingsDownloadPathMode": {
+    "message": "다운로드 경로 설정"
+  },
+  "settingsDownloadPathModeBrowser": {
+    "message": "브라우저 기본 경로 사용"
+  },
+  "settingsDownloadPathModeCustom": {
+    "message": "사용자 정의 경로 사용"
+  },
+  "settingsDownloadPathModeAsk": {
+    "message": "다운로드 시마다 경로 물어보기"
+  },
+  "settingsDownloadPath": {
+    "message": "사용자 정의 다운로드 경로"
+  },
+  "settingsDownloadPathPlaceholder": {
+    "message": "예: C:\\Users\\YourName\\Downloads 또는 /home/username/Downloads"
+  },
+  "settingsDownloadPathTip": {
+    "message": "사용자 정의 다운로드 경로를 입력하세요. Windows는 백슬래시 \\ 사용, Linux/Mac은 슬래시 / 사용"
+  },
+  "settingsMaxSpeed": {
+    "message": "최대 다운로드 속도"
+  },
+  "settingsMaxSpeedUnlimited": {
+    "message": "제한 없음"
+  },
+  "settingsMaxSpeedTip": {
+    "message": "단위: 바이트/초, 0은 제한 없음"
+  },
+  "settingsMaxConcurrent": {
+    "message": "동시 다운로드 작업 수"
+  },
+  "settingsMaxConcurrentTip": {
+    "message": "동시에 진행할 수 있는 최대 다운로드 작업 수 (1-10)"
+  },
+  "settingsDownloadBehavior": {
+    "message": "다운로드 완료 동작"
+  },
+  "settingsNotification": {
+    "message": "알림 설정"
+  },
+  "settingsRetry": {
+    "message": "재시도 설정"
+  },
+  "settingsAutoOpen": {
+    "message": "자동 파일 열기"
+  },
+  "settingsAutoOpenDesc": {
+    "message": "다운로드 완료 후 자동으로 파일 열기"
+  },
+  "settingsOpenFolder": {
+    "message": "폴더 열기"
+  },
+  "settingsOpenFolderDesc": {
+    "message": "다운로드 완료 후 파일이 있는 폴더 자동 열기"
+  },
+  "settingsShowNotification": {
+    "message": "알림 표시"
+  },
+  "settingsShowNotificationDesc": {
+    "message": "다운로드 완료 후 시스템 알림 표시"
+  },
+  "settingsPlaySound": {
+    "message": "소리 재생"
+  },
+  "settingsPlaySoundDesc": {
+    "message": "다운로드 완료 시 알림 소리 재생"
+  },
+  "settingsConflictAction": {
+    "message": "파일 충돌 처리"
+  },
+  "settingsConflictActionUniquify": {
+    "message": "자동 이름 변경"
+  },
+  "settingsConflictActionOverwrite": {
+    "message": "기존 파일 덮어쓰기"
+  },
+  "settingsConflictActionPrompt": {
+    "message": "사용자에게 물어보기"
+  },
+  "settingsConflictActionTip": {
+    "message": "다운로드할 파일이 이미 존재할 때의 처리 방식"
+  },
+  "settingsAutoRetry": {
+    "message": "자동 재시도"
+  },
+  "settingsAutoRetryDesc": {
+    "message": "다운로드 실패 시 자동으로 재시도"
+  },
+  "settingsRetryCount": {
+    "message": "재시도 횟수"
+  },
+  "settingsRetryCountTip": {
+    "message": "다운로드 실패 시 자동 재시도 횟수 (1-5회)"
+  },
+  "settingsTheme": {
+    "message": "테마"
+  },
+  "settingsLanguage": {
+    "message": "언어"
+  },
+  "settingsAppearance": {
+    "message": "외관 설정"
+  },
+  "settingsListDisplay": {
+    "message": "목록 표시 설정"
+  },
+  "settingsUseScrollLoad": {
+    "message": "스크롤 로드 사용"
+  },
+  "settingsUseScrollLoadDesc": {
+    "message": "활성화하면 목록이 스크롤 로드 모드를 사용하며, 기본적으로 지정된 수의 기록을 표시하고 아래로 스크롤할 때 자동으로 더 많은 기록을 로드합니다"
+  },
+  "settingsScrollLoadInitialSize": {
+    "message": "초기 표시 개수"
+  },
+  "settingsScrollLoadInitialSizeDesc": {
+    "message": "스크롤 로드 모드에서 처음 표시할 기록 개수 (5-50)"
+  },
+  "settingsDeleteConfirm": {
+    "message": "삭제 확인 설정"
+  },
+  "settingsConfirmDelete": {
+    "message": "삭제 시 확인"
+  },
+  "settingsConfirmDeleteDesc": {
+    "message": "파일과 기록 삭제 시 확인 대화상자 표시 여부"
+  },
+  "switchToPagination": {
+    "message": "페이지네이션 모드로 전환"
+  },
+  "switchToScrollLoad": {
+    "message": "스크롤 로드 모드로 전환"
+  },
+  "paginationMode": {
+    "message": "페이지네이션"
+  },
+  "scrollLoadMode": {
+    "message": "스크롤"
+  },
+  "scrollLoadMoreHint": {
+    "message": "아래로 스크롤하여 더 많은 항목 로드..."
+  },
+  "scrollLoadComplete": {
+    "message": "모든 기록이 로드되었습니다"
+  },
+  "settingsSaveSuccess": {
+    "message": "설정이 저장되었습니다"
+  },
+  "settingsSaveFailed": {
+    "message": "저장 실패"
+  },
+  "notificationDownloadComplete": {
+    "message": "다운로드 완료"
+  },
+  "notificationDownloadFailed": {
+    "message": "다운로드 실패"
+  },
+  "notificationDownloadPaused": {
+    "message": "다운로드 일시정지됨"
+  },
+  "notificationDownloadCancelled": {
+    "message": "다운로드 취소됨"
+  },
+  "messageDeleteConfirm": {
+    "message": "이 다운로드 기록을 삭제하시겠습니까?"
+  },
+  "messageDeleteRecordConfirm": {
+    "message": "이 다운로드 기록을 삭제하시겠습니까? 파일은 디스크에 남아 있습니다."
+  },
+  "messageDeleteRecordConfirmShort": {
+    "message": "삭제하시겠습니까?"
+  },
+  "messageDeleteFileAndRecordConfirm": {
+    "message": "이 기록과 파일을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다."
+  },
+  "messageDeleteSuccess": {
+    "message": "삭제되었습니다"
+  },
+  "messageDeleteFailed": {
+    "message": "삭제 실패"
+  },
+  "messageRetrySuccess": {
+    "message": "재시도 성공"
+  },
+  "messageRetryFailed": {
+    "message": "재시도 실패"
+  },
+  "messagePauseSuccess": {
+    "message": "일시정지되었습니다"
+  },
+  "messageResumeSuccess": {
+    "message": "재개되었습니다"
+  },
+  "messageRetryingDownload": {
+    "message": "다운로드 재시도 중"
+  },
+  "messageCancelSuccess": {
+    "message": "취소되었습니다"
+  },
+  "messageCopySuccess": {
+    "message": "클립보드에 복사되었습니다"
+  },
+  "messageCopyFailed": {
+    "message": "복사 실패"
+  },
+  "messageCannotResume": {
+    "message": "이 다운로드를 재개할 수 없습니다. 다시 다운로드하는 중..."
+  },
+  "errorUserCanceled": {
+    "message": "사용자가 다운로드를 취소했습니다"
+  },
+  "errorUserShutdown": {
+    "message": "브라우저가 종료되었습니다"
+  },
+  "errorNetworkFailed": {
+    "message": "네트워크 연결 실패"
+  },
+  "errorNetworkTimeout": {
+    "message": "네트워크 연결 시간 초과"
+  },
+  "errorNetworkDisconnected": {
+    "message": "네트워크 연결이 끊어졌습니다"
+  },
+  "errorNetworkServerDown": {
+    "message": "서버가 다운되었습니다"
+  },
+  "errorNetworkInvalidRequest": {
+    "message": "잘못된 네트워크 요청"
+  },
+  "errorFileFailed": {
+    "message": "파일 작업 실패"
+  },
+  "errorFileAccessDenied": {
+    "message": "파일 접근이 거부되었습니다"
+  },
+  "errorFileNoSpace": {
+    "message": "디스크 공간이 부족합니다"
+  },
+  "errorFileNameTooLong": {
+    "message": "파일명이 너무 깁니다"
+  },
+  "errorFileTooLarge": {
+    "message": "파일이 너무 큽니다"
+  },
+  "errorFileVirusInfected": {
+    "message": "파일에 바이러스가 있을 수 있습니다"
+  },
+  "errorFileTransientError": {
+    "message": "파일 임시 오류"
+  },
+  "errorFileBlocked": {
+    "message": "파일이 차단되었습니다"
+  },
+  "errorFileSecurityCheckFailed": {
+    "message": "파일 보안 검사가 실패했습니다"
+  },
+  "errorFileTooShort": {
+    "message": "파일이 너무 짧습니다"
+  },
+  "errorServerFailed": {
+    "message": "서버 오류"
+  },
+  "errorServerNoRange": {
+    "message": "서버가 부분 다운로드를 지원하지 않습니다"
+  },
+  "errorServerBadContent": {
+    "message": "서버가 잘못된 콘텐츠를 반환했습니다"
+  },
+  "errorServerUnauthorized": {
+    "message": "서버가 인증되지 않았습니다"
+  },
+  "errorServerCertProblem": {
+    "message": "서버 인증서 문제"
+  },
+  "errorServerForbidden": {
+    "message": "서버가 접근을 금지했습니다"
+  },
+  "errorCrash": {
+    "message": "다운로드 프로세스가 충돌했습니다"
+  },
+  "errorUnknown": {
+    "message": "알 수 없는 오류"
+  }
+}

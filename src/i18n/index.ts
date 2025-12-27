@@ -18,7 +18,22 @@ export const chromeLocaleMap: Record<string, Locale> = {
   en_US: 'en',
   ja: 'ja',
   'ja-JP': 'ja',
-  ja_JP: 'ja'
+  ja_JP: 'ja',
+  ru: 'ru',
+  'ru-RU': 'ru',
+  ru_RU: 'ru',
+  ko: 'ko',
+  'ko-KR': 'ko',
+  ko_KR: 'ko',
+  fr: 'fr',
+  'fr-FR': 'fr',
+  fr_FR: 'fr',
+  es: 'es',
+  'es-ES': 'es',
+  es_ES: 'es',
+  de: 'de',
+  'de-DE': 'de',
+  de_DE: 'de'
 }
 
 const LOCALE_STORAGE_KEY = 'download-manager-locale'
@@ -28,6 +43,7 @@ const LOCALE_STORAGE_KEY = 'download-manager-locale'
  */
 const loadMessages = async(locale: Locale): Promise<Record<string, string>> => {
   try {
+    // eslint-disable-next-line no-undef
     const response = await fetch(`/_locales/${locale}/messages.json`)
     if (!response.ok) {
       throw new Error(`Failed to load messages: ${response.status}`)
@@ -57,7 +73,7 @@ const getCurrentLocale = (): Locale => {
   // 优先从 localStorage 读取用户设置
   if (typeof localStorage !== 'undefined') {
     const stored = localStorage.getItem(LOCALE_STORAGE_KEY) as Locale | null
-    if (stored && ['zh_CN', 'zh_TW', 'en', 'ja'].includes(stored)) {
+    if (stored && ['zh_CN', 'zh_TW', 'en', 'ja', 'ru', 'ko', 'fr', 'es', 'de'].includes(stored)) {
       return stored
     }
   }
@@ -65,11 +81,15 @@ const getCurrentLocale = (): Locale => {
   // 检测浏览器语言
   if (typeof chrome !== 'undefined' && chrome.i18n) {
     const chromeLocale = chrome.i18n.getUILanguage()
-    return chromeLocaleMap[chromeLocale] || chromeLocaleMap[chromeLocale.split('-')[0]] || 'zh_CN'
+    const primaryLang = chromeLocale.split('-')[0] as keyof typeof chromeLocaleMap
+    const mapped = chromeLocaleMap[chromeLocale] || chromeLocaleMap[primaryLang]
+    return mapped || 'zh_CN'
   }
 
   const browserLang = navigator.language || (navigator as any).userLanguage
-  return chromeLocaleMap[browserLang] || chromeLocaleMap[browserLang.split('-')[0]] || 'zh_CN'
+  const primaryLang = browserLang.split('-')[0] as keyof typeof chromeLocaleMap
+  const mapped = chromeLocaleMap[browserLang] || chromeLocaleMap[primaryLang]
+  return mapped || 'zh_CN'
 }
 
 /**
@@ -79,11 +99,16 @@ const initI18n = async() => {
   const currentLocale = getCurrentLocale()
 
   // 加载所有语言的翻译文件
-  const [zh_CN, zh_TW, en, ja] = await Promise.all([
+  const [zh_CN, zh_TW, en, ja, ru, ko, fr, es, de] = await Promise.all([
     loadMessages('zh_CN'),
     loadMessages('zh_TW'),
     loadMessages('en'),
-    loadMessages('ja')
+    loadMessages('ja'),
+    loadMessages('ru'),
+    loadMessages('ko'),
+    loadMessages('fr'),
+    loadMessages('es'),
+    loadMessages('de')
   ])
 
   const i18n = createI18n({
@@ -94,7 +119,12 @@ const initI18n = async() => {
       zh_CN,
       zh_TW,
       en,
-      ja
+      ja,
+      ru,
+      ko,
+      fr,
+      es,
+      de
     },
     missingWarn: false,
     fallbackWarn: false

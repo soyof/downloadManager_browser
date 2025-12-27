@@ -1,0 +1,593 @@
+{
+  "extName": {
+    "message": "Менеджер загрузок"
+  },
+  "extDescription": {
+    "message": "Мощный менеджер загрузок с паузой/возобновлением, фильтрацией, сортировкой, поиском и темами"
+  },
+  "commonConfirm": {
+    "message": "Подтвердить"
+  },
+  "commonCancel": {
+    "message": "Отмена"
+  },
+  "commonDelete": {
+    "message": "Удалить"
+  },
+  "commonEdit": {
+    "message": "Редактировать"
+  },
+  "commonSave": {
+    "message": "Сохранить"
+  },
+  "commonSearch": {
+    "message": "Поиск"
+  },
+  "commonFilter": {
+    "message": "Фильтр"
+  },
+  "commonSort": {
+    "message": "Сортировка"
+  },
+  "commonRefresh": {
+    "message": "Обновить"
+  },
+  "commonSettings": {
+    "message": "Настройки"
+  },
+  "commonClose": {
+    "message": "Закрыть"
+  },
+  "commonOpen": {
+    "message": "Открыть"
+  },
+  "commonRetry": {
+    "message": "Повторить"
+  },
+  "commonPause": {
+    "message": "Пауза"
+  },
+  "commonResume": {
+    "message": "Возобновить"
+  },
+  "commonCancelDownload": {
+    "message": "Отменить загрузку"
+  },
+  "commonSelect": {
+    "message": "Выбрать"
+  },
+  "commonReset": {
+    "message": "Сброс"
+  },
+  "commonLoading": {
+    "message": "Загрузка..."
+  },
+  "commonYes": {
+    "message": "Да"
+  },
+  "commonNo": {
+    "message": "Нет"
+  },
+  "downloadTitle": {
+    "message": "Загрузки"
+  },
+  "downloadEmpty": {
+    "message": "Нет записей о загрузках"
+  },
+  "downloadEmptyDesc": {
+    "message": "После начала загрузки файлов записи появятся здесь"
+  },
+  "downloadDownloading": {
+    "message": "Загружается"
+  },
+  "downloadCompleted": {
+    "message": "Завершено"
+  },
+  "downloadFileDeleted": {
+    "message": "Файл удалён"
+  },
+  "downloadDeleted": {
+    "message": "Удалено"
+  },
+  "downloadPaused": {
+    "message": "Приостановлено"
+  },
+  "downloadFailed": {
+    "message": "Не удалось загрузить"
+  },
+  "downloadCancelled": {
+    "message": "Отменено"
+  },
+  "downloadAll": {
+    "message": "Все"
+  },
+  "downloadName": {
+    "message": "Имя файла"
+  },
+  "downloadSize": {
+    "message": "Размер"
+  },
+  "downloadProgress": {
+    "message": "Прогресс"
+  },
+  "downloadStatus": {
+    "message": "Статус"
+  },
+  "downloadSpeed": {
+    "message": "Скорость"
+  },
+  "downloadTime": {
+    "message": "Время"
+  },
+  "downloadPath": {
+    "message": "Путь сохранения"
+  },
+  "downloadOpenFile": {
+    "message": "Открыть файл"
+  },
+  "downloadOpenFolder": {
+    "message": "Открыть папку"
+  },
+  "downloadDeleteRecord": {
+    "message": "Удалить запись"
+  },
+  "downloadDeleteFileAndRecord": {
+    "message": "Удалить файл и запись"
+  },
+  "downloadRetryDownload": {
+    "message": "Повторить загрузку"
+  },
+  "downloadRedownload": {
+    "message": "Загрузить заново"
+  },
+  "downloadPauseDownload": {
+    "message": "Приостановить загрузку"
+  },
+  "downloadResumeDownload": {
+    "message": "Возобновить загрузку"
+  },
+  "downloadCancelDownload": {
+    "message": "Отменить загрузку"
+  },
+  "downloadCopyUrl": {
+    "message": "Копировать URL загрузки"
+  },
+  "downloadUrl": {
+    "message": "URL загрузки"
+  },
+  "downloadFileDetails": {
+    "message": "Детали файла"
+  },
+  "downloadFileName": {
+    "message": "Имя файла"
+  },
+  "downloadFilePath": {
+    "message": "Путь к файлу"
+  },
+  "downloadFileSize": {
+    "message": "Размер файла"
+  },
+  "downloadStartTime": {
+    "message": "Время начала"
+  },
+  "downloadEndTime": {
+    "message": "Время окончания"
+  },
+  "downloadMimeType": {
+    "message": "MIME-тип"
+  },
+  "downloadFileType": {
+    "message": "Тип файла"
+  },
+  "downloadId": {
+    "message": "ID загрузки"
+  },
+  "downloadDuration": {
+    "message": "Время загрузки"
+  },
+  "downloadRemainingTime": {
+    "message": "Оставшееся время"
+  },
+  "downloadReferrer": {
+    "message": "Источник ссылки"
+  },
+  "downloadIncognito": {
+    "message": "Инкогнито режим"
+  },
+  "downloadDanger": {
+    "message": "Уровень безопасности"
+  },
+  "downloadDangerSafe": {
+    "message": "Безопасно"
+  },
+  "downloadDangerUnsafe": {
+    "message": "Небезопасно"
+  },
+  "downloadDangerUserConfirmed": {
+    "message": "Подтверждено пользователем"
+  },
+  "downloadError": {
+    "message": "Информация об ошибке"
+  },
+  "downloadCanResume": {
+    "message": "Можно возобновить загрузку"
+  },
+  "downloadReceivedBytes": {
+    "message": "Получено"
+  },
+  "downloadFrom": {
+    "message": "Из"
+  },
+  "downloadSearchPlaceholder": {
+    "message": "Поиск по имени файла..."
+  },
+  "downloadFilterByStatus": {
+    "message": "Фильтр по статусу"
+  },
+  "downloadFilterByType": {
+    "message": "Фильтр по типу"
+  },
+  "downloadFileTypeImage": {
+    "message": "Изображение"
+  },
+  "downloadFileTypeVideo": {
+    "message": "Видео"
+  },
+  "downloadFileTypeDocument": {
+    "message": "Документ"
+  },
+  "downloadFileTypeAudio": {
+    "message": "Аудио"
+  },
+  "downloadFileTypeOther": {
+    "message": "Другое"
+  },
+  "downloadFilterByTime": {
+    "message": "Фильтр по времени"
+  },
+  "downloadTimeRangeToday": {
+    "message": "Сегодня"
+  },
+  "downloadTimeRangeYesterday": {
+    "message": "Вчера"
+  },
+  "downloadTimeRangeThisWeek": {
+    "message": "На этой неделе"
+  },
+  "downloadTimeRangeThisMonth": {
+    "message": "В этом месяце"
+  },
+  "downloadTimeRangeThisYear": {
+    "message": "В этом году"
+  },
+  "downloadTimeRangeOlder": {
+    "message": "Ранее"
+  },
+  "downloadFilterBySize": {
+    "message": "Фильтр по размеру"
+  },
+  "downloadSizeRangeSmall": {
+    "message": "Маленький (<10MB)"
+  },
+  "downloadSizeRangeMedium": {
+    "message": "Средний (10-100MB)"
+  },
+  "downloadSizeRangeLarge": {
+    "message": "Большой (100MB-1GB)"
+  },
+  "downloadSizeRangeVeryLarge": {
+    "message": "Очень большой (>1GB)"
+  },
+  "downloadFilterByExists": {
+    "message": "По статусу существования"
+  },
+  "downloadFileExists": {
+    "message": "Файл существует"
+  },
+  "downloadSortBy": {
+    "message": "Способ сортировки"
+  },
+  "downloadSortByTime": {
+    "message": "По времени"
+  },
+  "downloadSortBySize": {
+    "message": "По размеру"
+  },
+  "downloadSortByName": {
+    "message": "По имени"
+  },
+  "downloadSortOrderAsc": {
+    "message": "По возрастанию"
+  },
+  "downloadSortOrderDesc": {
+    "message": "По убыванию"
+  },
+  "settingsTitle": {
+    "message": "Настройки загрузки"
+  },
+  "settingsDownloadPathMode": {
+    "message": "Настройки пути загрузки"
+  },
+  "settingsDownloadPathModeBrowser": {
+    "message": "Использовать путь по умолчанию браузера"
+  },
+  "settingsDownloadPathModeCustom": {
+    "message": "Использовать пользовательский путь"
+  },
+  "settingsDownloadPathModeAsk": {
+    "message": "Спрашивать путь при каждой загрузке"
+  },
+  "settingsDownloadPath": {
+    "message": "Пользовательский путь загрузки"
+  },
+  "settingsDownloadPathPlaceholder": {
+    "message": "Например: C:\\Users\\YourName\\Downloads или /home/username/Downloads"
+  },
+  "settingsDownloadPathTip": {
+    "message": "Введите пользовательский путь загрузки. Windows использует обратный слэш \\, Linux/Mac использует прямой слэш /"
+  },
+  "settingsMaxSpeed": {
+    "message": "Максимальная скорость загрузки"
+  },
+  "settingsMaxSpeedUnlimited": {
+    "message": "Без ограничений"
+  },
+  "settingsMaxSpeedTip": {
+    "message": "Единицы измерения: байт/сек, 0 означает без ограничений"
+  },
+  "settingsMaxConcurrent": {
+    "message": "Количество одновременных загрузок"
+  },
+  "settingsMaxConcurrentTip": {
+    "message": "Максимальное количество одновременных задач загрузки (1-10)"
+  },
+  "settingsDownloadBehavior": {
+    "message": "Поведение после завершения загрузки"
+  },
+  "settingsNotification": {
+    "message": "Настройки уведомлений"
+  },
+  "settingsRetry": {
+    "message": "Настройки повтора"
+  },
+  "settingsAutoOpen": {
+    "message": "Автоматическое открытие файла"
+  },
+  "settingsAutoOpenDesc": {
+    "message": "Автоматически открывать файл после завершения загрузки"
+  },
+  "settingsOpenFolder": {
+    "message": "Открыть папку"
+  },
+  "settingsOpenFolderDesc": {
+    "message": "Автоматически открывать папку с файлом после завершения загрузки"
+  },
+  "settingsShowNotification": {
+    "message": "Показывать уведомления"
+  },
+  "settingsShowNotificationDesc": {
+    "message": "Показывать системные уведомления после завершения загрузки"
+  },
+  "settingsPlaySound": {
+    "message": "Воспроизводить звук"
+  },
+  "settingsPlaySoundDesc": {
+    "message": "Воспроизводить звук при завершении загрузки"
+  },
+  "settingsConflictAction": {
+    "message": "Обработка конфликтов файлов"
+  },
+  "settingsConflictActionUniquify": {
+    "message": "Автоматическое переименование"
+  },
+  "settingsConflictActionOverwrite": {
+    "message": "Перезаписать существующий файл"
+  },
+  "settingsConflictActionPrompt": {
+    "message": "Спросить пользователя"
+  },
+  "settingsConflictActionTip": {
+    "message": "Способ обработки, когда загружаемый файл уже существует"
+  },
+  "settingsAutoRetry": {
+    "message": "Автоматический повтор"
+  },
+  "settingsAutoRetryDesc": {
+    "message": "Автоматически повторять загрузку при неудаче"
+  },
+  "settingsRetryCount": {
+    "message": "Количество повторов"
+  },
+  "settingsRetryCountTip": {
+    "message": "Количество автоматических повторов при неудаче загрузки (1-5 раз)"
+  },
+  "settingsTheme": {
+    "message": "Тема"
+  },
+  "settingsLanguage": {
+    "message": "Язык"
+  },
+  "settingsAppearance": {
+    "message": "Настройки внешнего вида"
+  },
+  "settingsListDisplay": {
+    "message": "Настройки отображения списка"
+  },
+  "settingsUseScrollLoad": {
+    "message": "Использовать прокрутку для загрузки"
+  },
+  "settingsUseScrollLoadDesc": {
+    "message": "При включении список будет использовать режим прокрутки, по умолчанию отображая указанное количество записей, автоматически загружая больше при прокрутке вниз"
+  },
+  "settingsScrollLoadInitialSize": {
+    "message": "Начальное количество отображаемых"
+  },
+  "settingsScrollLoadInitialSizeDesc": {
+    "message": "Количество записей, отображаемых изначально в режиме прокрутки (5-50)"
+  },
+  "settingsDeleteConfirm": {
+    "message": "Настройки подтверждения удаления"
+  },
+  "settingsConfirmDelete": {
+    "message": "Подтверждение при удалении"
+  },
+  "settingsConfirmDeleteDesc": {
+    "message": "Показывать ли диалог подтверждения при удалении файлов и записей"
+  },
+  "switchToPagination": {
+    "message": "Переключить на режим пагинации"
+  },
+  "switchToScrollLoad": {
+    "message": "Переключить на режим прокрутки"
+  },
+  "paginationMode": {
+    "message": "Пагинация"
+  },
+  "scrollLoadMode": {
+    "message": "Прокрутка"
+  },
+  "scrollLoadMoreHint": {
+    "message": "Прокрутите вниз для загрузки большего количества..."
+  },
+  "scrollLoadComplete": {
+    "message": "Все записи загружены"
+  },
+  "settingsSaveSuccess": {
+    "message": "Настройки сохранены"
+  },
+  "settingsSaveFailed": {
+    "message": "Ошибка сохранения"
+  },
+  "notificationDownloadComplete": {
+    "message": "Загрузка завершена"
+  },
+  "notificationDownloadFailed": {
+    "message": "Загрузка не удалась"
+  },
+  "notificationDownloadPaused": {
+    "message": "Загрузка приостановлена"
+  },
+  "notificationDownloadCancelled": {
+    "message": "Загрузка отменена"
+  },
+  "messageDeleteConfirm": {
+    "message": "Вы уверены, что хотите удалить эту запись о загрузке?"
+  },
+  "messageDeleteRecordConfirm": {
+    "message": "Вы уверены, что хотите удалить эту запись о загрузке? Файл останется на диске."
+  },
+  "messageDeleteRecordConfirmShort": {
+    "message": "Подтвердить удаление?"
+  },
+  "messageDeleteFileAndRecordConfirm": {
+    "message": "Вы уверены, что хотите удалить эту запись и файл? Это действие нельзя отменить."
+  },
+  "messageDeleteSuccess": {
+    "message": "Удалено успешно"
+  },
+  "messageDeleteFailed": {
+    "message": "Ошибка удаления"
+  },
+  "messageRetrySuccess": {
+    "message": "Повтор успешен"
+  },
+  "messageRetryFailed": {
+    "message": "Повтор не удался"
+  },
+  "messagePauseSuccess": {
+    "message": "Приостановлено"
+  },
+  "messageResumeSuccess": {
+    "message": "Возобновлено"
+  },
+  "messageRetryingDownload": {
+    "message": "Повторение загрузки"
+  },
+  "messageCancelSuccess": {
+    "message": "Отменено"
+  },
+  "messageCopySuccess": {
+    "message": "Скопировано в буфер обмена"
+  },
+  "messageCopyFailed": {
+    "message": "Ошибка копирования"
+  },
+  "messageCannotResume": {
+    "message": "Невозможно возобновить эту загрузку, повторная загрузка..."
+  },
+  "errorUserCanceled": {
+    "message": "Загрузка отменена пользователем"
+  },
+  "errorUserShutdown": {
+    "message": "Браузер закрыт"
+  },
+  "errorNetworkFailed": {
+    "message": "Ошибка сетевого подключения"
+  },
+  "errorNetworkTimeout": {
+    "message": "Тайм-аут сетевого подключения"
+  },
+  "errorNetworkDisconnected": {
+    "message": "Сетевое подключение разорвано"
+  },
+  "errorNetworkServerDown": {
+    "message": "Сервер недоступен"
+  },
+  "errorNetworkInvalidRequest": {
+    "message": "Неверный сетевой запрос"
+  },
+  "errorFileFailed": {
+    "message": "Ошибка файловой операции"
+  },
+  "errorFileAccessDenied": {
+    "message": "Доступ к файлу запрещён"
+  },
+  "errorFileNoSpace": {
+    "message": "Недостаточно места на диске"
+  },
+  "errorFileNameTooLong": {
+    "message": "Имя файла слишком длинное"
+  },
+  "errorFileTooLarge": {
+    "message": "Файл слишком большой"
+  },
+  "errorFileVirusInfected": {
+    "message": "Файл может содержать вирус"
+  },
+  "errorFileTransientError": {
+    "message": "Временная ошибка файла"
+  },
+  "errorFileBlocked": {
+    "message": "Файл заблокирован"
+  },
+  "errorFileSecurityCheckFailed": {
+    "message": "Ошибка проверки безопасности файла"
+  },
+  "errorFileTooShort": {
+    "message": "Файл слишком короткий"
+  },
+  "errorServerFailed": {
+    "message": "Ошибка сервера"
+  },
+  "errorServerNoRange": {
+    "message": "Сервер не поддерживает докачку"
+  },
+  "errorServerBadContent": {
+    "message": "Сервер вернул недопустимый контент"
+  },
+  "errorServerUnauthorized": {
+    "message": "Сервер не авторизован"
+  },
+  "errorServerCertProblem": {
+    "message": "Проблема с сертификатом сервера"
+  },
+  "errorServerForbidden": {
+    "message": "Сервер запретил доступ"
+  },
+  "errorCrash": {
+    "message": "Процесс загрузки аварийно завершён"
+  },
+  "errorUnknown": {
+    "message": "Неизвестная ошибка"
+  }
+}

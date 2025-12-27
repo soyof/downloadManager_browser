@@ -98,6 +98,36 @@
                 >
                   日本語
                 </el-dropdown-item>
+                <el-dropdown-item
+                  command="ru"
+                  :class="{ 'is-active': currentLocale === 'ru' }"
+                >
+                  Русский
+                </el-dropdown-item>
+                <el-dropdown-item
+                  command="ko"
+                  :class="{ 'is-active': currentLocale === 'ko' }"
+                >
+                  한국어
+                </el-dropdown-item>
+                <el-dropdown-item
+                  command="fr"
+                  :class="{ 'is-active': currentLocale === 'fr' }"
+                >
+                  Français
+                </el-dropdown-item>
+                <el-dropdown-item
+                  command="es"
+                  :class="{ 'is-active': currentLocale === 'es' }"
+                >
+                  Español
+                </el-dropdown-item>
+                <el-dropdown-item
+                  command="de"
+                  :class="{ 'is-active': currentLocale === 'de' }"
+                >
+                  Deutsch
+                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>

@@ -1,0 +1,593 @@
+{
+  "extName": {
+    "message": "Gestionnaire de téléchargements"
+  },
+  "extDescription": {
+    "message": "Gestionnaire de téléchargements puissant avec pause/reprise, filtrage, tri, recherche, thèmes multiples pour gestion efficace"
+  },
+  "commonConfirm": {
+    "message": "Confirmer"
+  },
+  "commonCancel": {
+    "message": "Annuler"
+  },
+  "commonDelete": {
+    "message": "Supprimer"
+  },
+  "commonEdit": {
+    "message": "Modifier"
+  },
+  "commonSave": {
+    "message": "Enregistrer"
+  },
+  "commonSearch": {
+    "message": "Rechercher"
+  },
+  "commonFilter": {
+    "message": "Filtrer"
+  },
+  "commonSort": {
+    "message": "Trier"
+  },
+  "commonRefresh": {
+    "message": "Actualiser"
+  },
+  "commonSettings": {
+    "message": "Paramètres"
+  },
+  "commonClose": {
+    "message": "Fermer"
+  },
+  "commonOpen": {
+    "message": "Ouvrir"
+  },
+  "commonRetry": {
+    "message": "Réessayer"
+  },
+  "commonPause": {
+    "message": "Pause"
+  },
+  "commonResume": {
+    "message": "Reprendre"
+  },
+  "commonCancelDownload": {
+    "message": "Annuler le téléchargement"
+  },
+  "commonSelect": {
+    "message": "Sélectionner"
+  },
+  "commonReset": {
+    "message": "Réinitialiser"
+  },
+  "commonLoading": {
+    "message": "Chargement..."
+  },
+  "commonYes": {
+    "message": "Oui"
+  },
+  "commonNo": {
+    "message": "Non"
+  },
+  "downloadTitle": {
+    "message": "Téléchargements"
+  },
+  "downloadEmpty": {
+    "message": "Aucun historique de téléchargement"
+  },
+  "downloadEmptyDesc": {
+    "message": "Les enregistrements apparaîtront ici une fois que vous commencerez à télécharger des fichiers"
+  },
+  "downloadDownloading": {
+    "message": "Téléchargement en cours"
+  },
+  "downloadCompleted": {
+    "message": "Terminé"
+  },
+  "downloadFileDeleted": {
+    "message": "Fichier supprimé"
+  },
+  "downloadDeleted": {
+    "message": "Supprimé"
+  },
+  "downloadPaused": {
+    "message": "En pause"
+  },
+  "downloadFailed": {
+    "message": "Échec du téléchargement"
+  },
+  "downloadCancelled": {
+    "message": "Annulé"
+  },
+  "downloadAll": {
+    "message": "Tout"
+  },
+  "downloadName": {
+    "message": "Nom du fichier"
+  },
+  "downloadSize": {
+    "message": "Taille"
+  },
+  "downloadProgress": {
+    "message": "Progression"
+  },
+  "downloadStatus": {
+    "message": "Statut"
+  },
+  "downloadSpeed": {
+    "message": "Vitesse"
+  },
+  "downloadTime": {
+    "message": "Heure"
+  },
+  "downloadPath": {
+    "message": "Chemin de sauvegarde"
+  },
+  "downloadOpenFile": {
+    "message": "Ouvrir le fichier"
+  },
+  "downloadOpenFolder": {
+    "message": "Ouvrir le dossier"
+  },
+  "downloadDeleteRecord": {
+    "message": "Supprimer l'enregistrement"
+  },
+  "downloadDeleteFileAndRecord": {
+    "message": "Supprimer le fichier et l'enregistrement"
+  },
+  "downloadRetryDownload": {
+    "message": "Réessayer le téléchargement"
+  },
+  "downloadRedownload": {
+    "message": "Télécharger à nouveau"
+  },
+  "downloadPauseDownload": {
+    "message": "Mettre en pause le téléchargement"
+  },
+  "downloadResumeDownload": {
+    "message": "Reprendre le téléchargement"
+  },
+  "downloadCancelDownload": {
+    "message": "Annuler le téléchargement"
+  },
+  "downloadCopyUrl": {
+    "message": "Copier l'URL de téléchargement"
+  },
+  "downloadUrl": {
+    "message": "URL de téléchargement"
+  },
+  "downloadFileDetails": {
+    "message": "Détails du fichier"
+  },
+  "downloadFileName": {
+    "message": "Nom du fichier"
+  },
+  "downloadFilePath": {
+    "message": "Chemin du fichier"
+  },
+  "downloadFileSize": {
+    "message": "Taille du fichier"
+  },
+  "downloadStartTime": {
+    "message": "Heure de début"
+  },
+  "downloadEndTime": {
+    "message": "Heure de fin"
+  },
+  "downloadMimeType": {
+    "message": "Type MIME"
+  },
+  "downloadFileType": {
+    "message": "Type de fichier"
+  },
+  "downloadId": {
+    "message": "ID de téléchargement"
+  },
+  "downloadDuration": {
+    "message": "Durée du téléchargement"
+  },
+  "downloadRemainingTime": {
+    "message": "Temps restant"
+  },
+  "downloadReferrer": {
+    "message": "Source de référence"
+  },
+  "downloadIncognito": {
+    "message": "Mode incognito"
+  },
+  "downloadDanger": {
+    "message": "Niveau de sécurité"
+  },
+  "downloadDangerSafe": {
+    "message": "Sécurisé"
+  },
+  "downloadDangerUnsafe": {
+    "message": "Dangereux"
+  },
+  "downloadDangerUserConfirmed": {
+    "message": "Confirmé par l'utilisateur"
+  },
+  "downloadError": {
+    "message": "Informations sur l'erreur"
+  },
+  "downloadCanResume": {
+    "message": "Peut reprendre le téléchargement"
+  },
+  "downloadReceivedBytes": {
+    "message": "Reçu"
+  },
+  "downloadFrom": {
+    "message": "De"
+  },
+  "downloadSearchPlaceholder": {
+    "message": "Rechercher par nom de fichier..."
+  },
+  "downloadFilterByStatus": {
+    "message": "Filtrer par statut"
+  },
+  "downloadFilterByType": {
+    "message": "Filtrer par type"
+  },
+  "downloadFileTypeImage": {
+    "message": "Image"
+  },
+  "downloadFileTypeVideo": {
+    "message": "Vidéo"
+  },
+  "downloadFileTypeDocument": {
+    "message": "Document"
+  },
+  "downloadFileTypeAudio": {
+    "message": "Audio"
+  },
+  "downloadFileTypeOther": {
+    "message": "Autre"
+  },
+  "downloadFilterByTime": {
+    "message": "Filtrer par heure"
+  },
+  "downloadTimeRangeToday": {
+    "message": "Aujourd'hui"
+  },
+  "downloadTimeRangeYesterday": {
+    "message": "Hier"
+  },
+  "downloadTimeRangeThisWeek": {
+    "message": "Cette semaine"
+  },
+  "downloadTimeRangeThisMonth": {
+    "message": "Ce mois"
+  },
+  "downloadTimeRangeThisYear": {
+    "message": "Cette année"
+  },
+  "downloadTimeRangeOlder": {
+    "message": "Plus ancien"
+  },
+  "downloadFilterBySize": {
+    "message": "Filtrer par taille"
+  },
+  "downloadSizeRangeSmall": {
+    "message": "Petit fichier (<10MB)"
+  },
+  "downloadSizeRangeMedium": {
+    "message": "Moyen (10-100MB)"
+  },
+  "downloadSizeRangeLarge": {
+    "message": "Grand (100MB-1GB)"
+  },
+  "downloadSizeRangeVeryLarge": {
+    "message": "Très grand (>1GB)"
+  },
+  "downloadFilterByExists": {
+    "message": "Par statut d'existence"
+  },
+  "downloadFileExists": {
+    "message": "Le fichier existe"
+  },
+  "downloadSortBy": {
+    "message": "Mode de tri"
+  },
+  "downloadSortByTime": {
+    "message": "Par heure"
+  },
+  "downloadSortBySize": {
+    "message": "Par taille"
+  },
+  "downloadSortByName": {
+    "message": "Par nom"
+  },
+  "downloadSortOrderAsc": {
+    "message": "Croissant"
+  },
+  "downloadSortOrderDesc": {
+    "message": "Décroissant"
+  },
+  "settingsTitle": {
+    "message": "Paramètres de téléchargement"
+  },
+  "settingsDownloadPathMode": {
+    "message": "Paramètres du chemin de téléchargement"
+  },
+  "settingsDownloadPathModeBrowser": {
+    "message": "Utiliser le chemin par défaut du navigateur"
+  },
+  "settingsDownloadPathModeCustom": {
+    "message": "Utiliser un chemin personnalisé"
+  },
+  "settingsDownloadPathModeAsk": {
+    "message": "Demander le chemin à chaque téléchargement"
+  },
+  "settingsDownloadPath": {
+    "message": "Chemin de téléchargement personnalisé"
+  },
+  "settingsDownloadPathPlaceholder": {
+    "message": "Exemple : C:\\Users\\YourName\\Downloads ou /home/username/Downloads"
+  },
+  "settingsDownloadPathTip": {
+    "message": "Entrez un chemin de téléchargement personnalisé. Windows utilise la barre oblique inverse \\, Linux/Mac utilise la barre oblique /"
+  },
+  "settingsMaxSpeed": {
+    "message": "Vitesse de téléchargement maximale"
+  },
+  "settingsMaxSpeedUnlimited": {
+    "message": "Illimitée"
+  },
+  "settingsMaxSpeedTip": {
+    "message": "Unité : octet/seconde, 0 signifie illimité"
+  },
+  "settingsMaxConcurrent": {
+    "message": "Nombre de téléchargements simultanés"
+  },
+  "settingsMaxConcurrentTip": {
+    "message": "Nombre maximum de tâches de téléchargement simultanées (1-10)"
+  },
+  "settingsDownloadBehavior": {
+    "message": "Comportement après achèvement du téléchargement"
+  },
+  "settingsNotification": {
+    "message": "Paramètres de notification"
+  },
+  "settingsRetry": {
+    "message": "Paramètres de retry"
+  },
+  "settingsAutoOpen": {
+    "message": "Ouverture automatique du fichier"
+  },
+  "settingsAutoOpenDesc": {
+    "message": "Ouvrir automatiquement le fichier après achèvement du téléchargement"
+  },
+  "settingsOpenFolder": {
+    "message": "Ouvrir le dossier"
+  },
+  "settingsOpenFolderDesc": {
+    "message": "Ouvrir automatiquement le dossier contenant le fichier après achèvement du téléchargement"
+  },
+  "settingsShowNotification": {
+    "message": "Afficher les notifications"
+  },
+  "settingsShowNotificationDesc": {
+    "message": "Afficher les notifications système après achèvement du téléchargement"
+  },
+  "settingsPlaySound": {
+    "message": "Jouer un son"
+  },
+  "settingsPlaySoundDesc": {
+    "message": "Jouer un son de notification à l'achèvement du téléchargement"
+  },
+  "settingsConflictAction": {
+    "message": "Gestion des conflits de fichiers"
+  },
+  "settingsConflictActionUniquify": {
+    "message": "Renommer automatiquement"
+  },
+  "settingsConflictActionOverwrite": {
+    "message": "Écraser le fichier existant"
+  },
+  "settingsConflictActionPrompt": {
+    "message": "Demander à l'utilisateur"
+  },
+  "settingsConflictActionTip": {
+    "message": "Comment gérer quand le fichier à télécharger existe déjà"
+  },
+  "settingsAutoRetry": {
+    "message": "Retry automatique"
+  },
+  "settingsAutoRetryDesc": {
+    "message": "Réessayer automatiquement le téléchargement en cas d'échec"
+  },
+  "settingsRetryCount": {
+    "message": "Nombre de retry"
+  },
+  "settingsRetryCountTip": {
+    "message": "Nombre de retry automatiques en cas d'échec du téléchargement (1-5 fois)"
+  },
+  "settingsTheme": {
+    "message": "Thème"
+  },
+  "settingsLanguage": {
+    "message": "Langue"
+  },
+  "settingsAppearance": {
+    "message": "Paramètres d'apparence"
+  },
+  "settingsListDisplay": {
+    "message": "Paramètres d'affichage de liste"
+  },
+  "settingsUseScrollLoad": {
+    "message": "Utiliser le chargement par défilement"
+  },
+  "settingsUseScrollLoadDesc": {
+    "message": "Activé, la liste utilise le mode de chargement par défilement, affichant par défaut un nombre spécifié d'enregistrements et chargeant automatiquement plus en défilant vers le bas"
+  },
+  "settingsScrollLoadInitialSize": {
+    "message": "Nombre initial d'affichages"
+  },
+  "settingsScrollLoadInitialSizeDesc": {
+    "message": "Nombre d'enregistrements affichés initialement en mode de chargement par défilement (5-50)"
+  },
+  "settingsDeleteConfirm": {
+    "message": "Paramètres de confirmation de suppression"
+  },
+  "settingsConfirmDelete": {
+    "message": "Confirmer la suppression"
+  },
+  "settingsConfirmDeleteDesc": {
+    "message": "Afficher ou non une boîte de dialogue de confirmation lors de la suppression de fichiers et d'enregistrements"
+  },
+  "switchToPagination": {
+    "message": "Basculer vers le mode pagination"
+  },
+  "switchToScrollLoad": {
+    "message": "Basculer vers le mode défilement"
+  },
+  "paginationMode": {
+    "message": "Pagination"
+  },
+  "scrollLoadMode": {
+    "message": "Défilement"
+  },
+  "scrollLoadMoreHint": {
+    "message": "Défiler vers le bas pour charger plus..."
+  },
+  "scrollLoadComplete": {
+    "message": "Tous les enregistrements ont été chargés"
+  },
+  "settingsSaveSuccess": {
+    "message": "Paramètres enregistrés"
+  },
+  "settingsSaveFailed": {
+    "message": "Échec de l'enregistrement"
+  },
+  "notificationDownloadComplete": {
+    "message": "Téléchargement terminé"
+  },
+  "notificationDownloadFailed": {
+    "message": "Échec du téléchargement"
+  },
+  "notificationDownloadPaused": {
+    "message": "Téléchargement en pause"
+  },
+  "notificationDownloadCancelled": {
+    "message": "Téléchargement annulé"
+  },
+  "messageDeleteConfirm": {
+    "message": "Êtes-vous sûr de vouloir supprimer cet enregistrement de téléchargement ?"
+  },
+  "messageDeleteRecordConfirm": {
+    "message": "Êtes-vous sûr de vouloir supprimer cet enregistrement de téléchargement ? Le fichier restera sur le disque."
+  },
+  "messageDeleteRecordConfirmShort": {
+    "message": "Confirmer la suppression ?"
+  },
+  "messageDeleteFileAndRecordConfirm": {
+    "message": "Êtes-vous sûr de vouloir supprimer cet enregistrement et le fichier ? Cette action est irréversible."
+  },
+  "messageDeleteSuccess": {
+    "message": "Suppression réussie"
+  },
+  "messageDeleteFailed": {
+    "message": "Échec de la suppression"
+  },
+  "messageRetrySuccess": {
+    "message": "Retry réussi"
+  },
+  "messageRetryFailed": {
+    "message": "Échec du retry"
+  },
+  "messagePauseSuccess": {
+    "message": "Mis en pause"
+  },
+  "messageResumeSuccess": {
+    "message": "Repris"
+  },
+  "messageRetryingDownload": {
+    "message": "Retry du téléchargement"
+  },
+  "messageCancelSuccess": {
+    "message": "Annulé"
+  },
+  "messageCopySuccess": {
+    "message": "Copié dans le presse-papiers"
+  },
+  "messageCopyFailed": {
+    "message": "Échec de la copie"
+  },
+  "messageCannotResume": {
+    "message": "Impossible de reprendre ce téléchargement. Téléchargement à nouveau..."
+  },
+  "errorUserCanceled": {
+    "message": "Téléchargement annulé par l'utilisateur"
+  },
+  "errorUserShutdown": {
+    "message": "Navigateur fermé"
+  },
+  "errorNetworkFailed": {
+    "message": "Échec de la connexion réseau"
+  },
+  "errorNetworkTimeout": {
+    "message": "Délai d'expiration de la connexion réseau"
+  },
+  "errorNetworkDisconnected": {
+    "message": "Connexion réseau déconnectée"
+  },
+  "errorNetworkServerDown": {
+    "message": "Serveur hors service"
+  },
+  "errorNetworkInvalidRequest": {
+    "message": "Requête réseau invalide"
+  },
+  "errorFileFailed": {
+    "message": "Échec de l'opération fichier"
+  },
+  "errorFileAccessDenied": {
+    "message": "Accès au fichier refusé"
+  },
+  "errorFileNoSpace": {
+    "message": "Espace disque insuffisant"
+  },
+  "errorFileNameTooLong": {
+    "message": "Nom de fichier trop long"
+  },
+  "errorFileTooLarge": {
+    "message": "Fichier trop volumineux"
+  },
+  "errorFileVirusInfected": {
+    "message": "Le fichier peut contenir un virus"
+  },
+  "errorFileTransientError": {
+    "message": "Erreur temporaire du fichier"
+  },
+  "errorFileBlocked": {
+    "message": "Fichier bloqué"
+  },
+  "errorFileSecurityCheckFailed": {
+    "message": "Échec de la vérification de sécurité du fichier"
+  },
+  "errorFileTooShort": {
+    "message": "Fichier trop court"
+  },
+  "errorServerFailed": {
+    "message": "Erreur serveur"
+  },
+  "errorServerNoRange": {
+    "message": "Le serveur ne prend pas en charge la reprise de téléchargement"
+  },
+  "errorServerBadContent": {
+    "message": "Le serveur a retourné un contenu invalide"
+  },
+  "errorServerUnauthorized": {
+    "message": "Serveur non autorisé"
+  },
+  "errorServerCertProblem": {
+    "message": "Problème de certificat serveur"
+  },
+  "errorServerForbidden": {
+    "message": "Serveur a refusé l'accès"
+  },
+  "errorCrash": {
+    "message": "Le processus de téléchargement a planté"
+  },
+  "errorUnknown": {
+    "message": "Erreur inconnue"
+  }
+}
